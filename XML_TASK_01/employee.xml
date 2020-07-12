@@ -1,0 +1,17 @@
+<employees>
+	<empployee>
+		<id>1</id>
+		<name>John Doe</name>
+		<address>H# 38, R#3, Banani, Dhaka</address>
+		<department>Sales</department>
+		<salary>$20000 </salary>
+	</empployee>
+
+	<product>
+		<id>2</id>
+		<name>Mark Zuckerberg</name>
+		<address>65300</address>
+		<department>35</department>
+		<salary>$12000</salary>
+	</employee>
+</employees>
