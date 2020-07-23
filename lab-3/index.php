@@ -2,69 +2,71 @@
 <html>
 <head>
     <title>HTML-FORM Validation using PHP</title>
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+          -moz-appearance: textfield;
+        }
+
+        strong {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <?php
 
-        $nameErr = $emailErr = $genderErr = $websiteErr = "";
-        $name = $email = $gender = $comment = $website = "";
+        $nameErr = $emailErr = $genderErr = $websiteErr = $dateErr = $degreeErr = $bloodErr = $picErr = "";
+        $name = $email = $gender = $date = $degree = $blood = $pic = "";
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            
-            //name field validation
+        if (isset($_POST['nameSubmit'])) {
+            if (isset($_POST['name'])) {
+                $name = trim($_POST['name']);
+                if (!$name == '') {
+                    if(str_word_count($name) > 1) {
+                        if (ctype_alpha($name[0])) {
+                            if (!validateName($name)) {
+                                $nameErr = 'Name must contain a-z, A-Z, dot(.) or dash(-)';
+                            }
+                        } else {
+                            $nameErr = 'Name must start with a letter';
+                        }
+                    } else {
+                        $nameErr = 'Name can not be less than two words';
+                    }
+                } else {
+                    $nameErr = 'Name can not be empty';
+                }
+            } else {
+                $nameErr = 'Name is required';
+            }
+        }
 
-            $name = $_POST['name'];
-            if (empty($_POST["name"])) {
-               $nameErr = "Name is required";
+        function validateName($string) {
+            $array = str_split($string);
+            foreach ($array as $value) {
+                if ($value == '.' || $value == '-' || $value == ' ' || ctype_alpha($value)) {
+                    continue;
+                } else {
+                    return false;
+                }
             }
-            elseif ((strstr($name,"/") != "") && (strstr($name,"*") != "") (strstr($name,"-") != "") && (strstr($name,"@") != "") && (strstr($name,"+") != "") && (strstr($name,"&") != "") && (strstr($name,"$") != "") && (strstr($name,"#") != "") && (strstr($name,"%") != "") (strstr($name,"|") != "")) { 
-                $nameErr = "No special character allowed";
-            }
-            else if(strlen($name) < 2){
-                $nameErr = "At least 2 letter is required";
-            }
-            else if(!ctype_upper($name[0])){
-                $nameErr = "First letter must be capital";
-            }
-            else if(!ctype_alpha($name)){
-                $nameErr = "No special character allowed";
-            }
-            else {
-                $nameErr = "Looks good";
-            }
-
-            //email field validation
-
-            $email = $_POST["email"];
-            if(empty($_POST["email"])) {
-                $emailErr = "Email is required";
-            } 
-            else {
-               
-               if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                  $emailErr = "Invalid email format"; 
-               }
-            }
+            return true;
         }
     ?>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <label>Name</label><br>
-        <input type="text" name="name" size="20px" style="margin: 5px 0px 5px 0px">
+        <input type="text" name="name" value="<?php echo $name;?>" size="20px" style="margin: 5px 0px 5px 0px">
         <strong><span> <?php echo $nameErr;?></span></strong><br>
-        <input type="submit" value="submit"><br><br>
-
-
-
-        <label>Email</label><br>
-        
-        <input type="text" name="email" style="margin: 5px 0px 5px 0px">
-        <img src="info.png" width="17px" height="17px" alt="alternative text" title="Hint: sample@example.com">
-        <strong><span> <?php echo $emailErr;?></span></strong><br>
-        <input type="submit" value="submit">
-
-
-
+        <input name="nameSubmit" type="submit" value="Submit"><br><br>
     </form>
-
+    
 </body>
 </html>
