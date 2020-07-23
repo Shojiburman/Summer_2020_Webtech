@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>HTML-FORM Validation using PHP</title>
+    <title>lab_Task_03</title>
     <style>
         /* Chrome, Safari, Edge, Opera */
         input::-webkit-outer-spin-button,
@@ -20,13 +21,13 @@
         }
     </style>
 </head>
+
 <body>
     <?php
-        $nameErr = $emailErr = $genderErr = $dateErr = $degreeErr = $bloodErr = $picErr = $uidErr = "";
-        $name = $email = $gender = $date = $blood = $pic = $uid = "";
+        $name = $email = $gender = $date = $blood = $pic = "";
         $degree = [];
 
-        if (isset($_POST['nameSubmit'])) {
+        if (isset($_POST['submit'])) {
             if (isset($_POST['name'])) {
                 $name = trim($_POST['name']);
                 if (!$name == '') {
@@ -47,9 +48,7 @@
             } else {
                 $nameErr = 'Name is required';
             }
-        }
 
-        if (isset($_POST['emailSubmit'])) {
             if (isset($_POST['email'])) {
                 $email = trim($_POST['email']);
                 if (!$email == '') {
@@ -90,17 +89,13 @@
             } else {
                 $emailErr = 'Email is required';
             }
-        }
 
-        if (isset($_POST['genderSubmit'])) {
             if (empty($_POST["gender"])) {
                $genderErr = "Gender is required";
             } else {
                 $gender = $_POST['gender'];
             }
-        }
 
-        if (isset($_POST['dobSubmit'])) {
             if (empty($_POST["year"])) {
                 $year = $_POST["year"];
                 $dateErr = "Year(yyyy) is required";
@@ -148,38 +143,23 @@
                     $dateErr = "Year(yyyy) must be between 1900 - 2016";
                 }
             }
-        }   
 
-        if (isset($_POST['degreeSubmit'])) {
             if (empty($_POST["degree"])) {
                $degreeErr = "Degree is required";
             } else {
                 $degree = $_POST['degree'];
             }
-        }
 
-        if (isset($_POST['blood'])) {
             if (empty($_POST["blood"]) || $_POST["blood"] == '0') {
                 $bloodErr = "Blood group is required";
             } else {
                 $blood = $_POST['blood'];
             }
-        }
 
-        if (isset($_POST['profileSubmit'])) {
             if(empty($_POST["pic"])) {
                 $picErr = "Picture is required";
             } else {
                 $pic = $_POST["pic"];
-            }
-            if(empty($_POST["uid"])) {
-                $uid = $_POST["uid"];
-                $picErr = "User ID is required";
-            } else if(intval($_POST["uid"]) < 1) {
-                $uid = $_POST["uid"];
-                $picErr = "User ID must be postive";
-            } else {
-                $uid = $_POST["uid"];
             }
         }            
 
@@ -227,106 +207,114 @@
             return true;
         }
     ?>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-        <label>Name</label><br>
-        <input type="text" name="name" value="<?php echo $name;?>" size="20px" style="margin: 5px 0px 5px 0px">
-        <strong><span> <?php echo $nameErr;?></span></strong><br>
-        <input name="nameSubmit" type="submit" value="Submit"><br><br>
-    </form>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-        <label>Email</label><br>        
-        <input type="text" name="email" value="<?php echo $email;?>" style="margin: 5px 0px 5px 0px">
-        <img src="info.png" width="17px" height="17px" alt="alternative text" title="Hint: sample@example.com">
-        <strong><span> <?php echo $emailErr;?></span></strong><br>
-        <input name="emailSubmit" type="submit" value="Submit"><br><br>
-    </form>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-        <fieldset style="width: 200px; display: inline-block;">
-            <legend>Gender</legend>
-            <input type="radio" name="gender" value="Male" <?php if (isset($gender) && $gender == "Male") echo "checked"; ?>><label>Male</label>
-            <input type="radio" name="gender" value="Female" <?php if (isset($gender) && $gender == "Female") echo "checked"; ?>><label>Female</label>
-            <input type="radio" name="gender" value="Other" <?php if (isset($gender) && $gender == "Other") echo "checked"; ?>><label>Other</label>
-        </fieldset>
-        <strong><span><?php echo $genderErr;?></span></strong><br>
-        <input name="genderSubmit" type="submit" value="Submit"><br><br>
-    </form>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-        <table>
-            <tr>
+    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <table border="1" cellspacing="0" cellpadding="5" align="Center" width="450px" height="auto">
+            <th rowspan="2" colspan="3" align="Center">
+                <H1>PERSON PROFILE</H1>
+            </th>
+            <tr></tr>
+            <tr height="45px">
+                <td>Name</td>
                 <td>
-                    <fieldset style="width: auto; display: inline-block;">
-                        <legend>Date of birth</legend>
-                            <table>
-                                <tr>
-                                    <td align="center">dd</td>
-                                    <td></td>
-                                    <td align="center">mm</td>
-                                    <td></td>
-                                    <td align="center">yyyy</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-bottom: 10px"><input type="number" name="date" value="<?php echo $date;?>" size="1px"></td>
-                                    <td style="padding-bottom: 10px"><strong style="color: black"> / </strong></td>
-                                    <td style="padding-bottom: 10px"><input type="number" name="month" value="<?php echo $month;?>" size="1px"></td>
-                                    <td style="padding-bottom: 10px"><strong style="color: black"> / </strong></td>
-                                    <td style="padding-bottom: 10px"><input type="number" name="year" value="<?php echo $year;?>" size="2px"></td>
-                                </tr>
-                                <tr><td colspan="5" style="border-top: 1px solid black; padding-top: 10px"><input name="dobSubmit" type="submit" value="Submit"></td></tr>
-                            </table>
-                    </fieldset>
+                    <input type="text" name="name" value="<?php echo $name;?>"  size="25px">
                 </td>
+                <td width="20px"></td>
+            </tr>
+            <tr height="45px">
+                <td>Email</td>
                 <td>
-                    <strong><span><?php echo $dateErr;?></span></strong>
+                    <input type="text" name="email" value="<?php echo $email;?>" size="25px">
+                </td>
+                <td></td>
+            </tr>
+            <tr height="45px">
+                <td>Gender</td>
+                <td>
+                    <input type="radio" name="gender" value="Male" <?php if (isset($gender) && $gender == "Male") echo "checked"; ?>><label>Male</label>
+                    <input type="radio" name="gender" value="Female" <?php if (isset($gender) && $gender == "Female") echo "checked"; ?>><label>Female</label>
+                    <input type="radio" name="gender" value="Other" <?php if (isset($gender) && $gender == "Other") echo "checked"; ?>><label>Other</label>
+                </td>
+                <td></td>
+            </tr>
+            <tr height="45px">
+                <td width="100px">Date Of Birth</td>
+                <td>
+                    <input type="number" name="date" value="<?php echo $date;?>" size="1px"><strong style="color: black">/ </strong>
+                    <input type="number" name="month" value="<?php echo $month;?>" size="1px"><strong style="color: black">/ </strong>
+                    <input type="number" name="year" value="<?php echo $year;?>" size="2px"><i> (dd/mm/yyyy)</i>
+                </td>
+                <td></td>
+            </tr>
+            <tr height="45px">
+                <td>Blood Group</td>
+                <td>
+                    <select name="blood">
+                        <option value="0">Select</option>
+                        <option value="A+" <?php if (isset($blood) && $blood == "A+") echo "selected"; ?>>A+</option>
+                        <option value="A-" <?php if (isset($blood) && $blood == "A-") echo "selected"; ?>>A-</option>
+                        <option value="B+" <?php if (isset($blood) && $blood == "B+") echo "selected"; ?>>B+</option>
+                        <option value="B-" <?php if (isset($blood) && $blood == "B-") echo "selected"; ?>>B-</option>
+                        <option value="AB+" <?php if (isset($blood) && $blood == "AB+") echo "selected"; ?>>AB+</option>
+                        <option value="AB-" <?php if (isset($blood) && $blood == "AB-") echo "selected"; ?>>AB-</option>
+                        <option value="O+" <?php if (isset($blood) && $blood == "O+") echo "selected"; ?>>O+</option>
+                        <option value="O-" <?php if (isset($blood) && $blood == "O-") echo "selected"; ?>>O-</option>
+                    </select>
+                </td>
+                <td></td>
+            </tr>
+            <tr height="45px">
+                <td>Degree</td>
+                <td>
+                    <input type="checkbox" name="degree[]" value="SSC" <?php if (isset($degree) && in_array('SSC', $degree)) echo "checked"; ?>><label>SSC</label>
+                    <input type="checkbox" name="degree[]" value="HSC" <?php if (isset($degree) && in_array('HSC', $degree)) echo "checked"; ?>><label>HSC</label>
+                    <input type="checkbox" name="degree[]" value="BSc" <?php if (isset($degree) && in_array('BSc', $degree)) echo "checked"; ?>><label>BSc.</label>
+                    <input type="checkbox" name="degree[]" value="MSc" <?php if (isset($degree) && in_array('MSc', $degree)) echo "checked"; ?>><label>MSc.</label>
+                </td>
+                <td></td>
+            </tr>
+            <tr height="45px">
+                <td>Photo</td>
+                <td colspan="2"><input type="file" name="pic"></td>
+            </tr>
+            <tr height="45px">
+                <td colspan="3">
+            <?php 
+                // if(isset($nameErr) || isset($emailErr) || isset($genderErr) || isset($dateErr) || isset($degreeErr) || isset($bloodErr) || isset($picErr)) {
+                //     echo '<tr height="45px"><td colspan="3">';
+                    if (isset($nameErr)) {
+                        echo "<strong><span>" . $nameErr . "</span></strong><br/>";
+                    }
+                    if (isset($emailErr)) {
+                        echo "<strong><span>" . $emailErr . "</span></strong><br/>";
+                    }
+                    if (isset($genderErr)) {
+                        echo "<strong><span>" . $genderErr . "</span></strong><br/>";
+                    }
+                    if (isset($dateErr)) {
+                        echo "<strong><span>" . $dateErr . "</span></strong><br/>";
+                    }
+                    if (isset($degreeErr)) {
+                        echo "<strong><span>" . $degreeErr . "</span></strong><br/>";
+                    }
+                    if (isset($bloodErr)) {
+                        echo "<strong><span>" . $bloodErr . "</span></strong><br/>";
+                    }
+                    if (isset($picErr)) {
+                        echo "<strong><span>" . $picErr . "</span></strong><br/>";
+                    }
+                //     echo '</td></tr>';
+                // }    
+            ?>
+                </td>
+            </tr>
+            <tr height="40px">
+                <td colspan="3" align="right">
+                    <input type="submit" name="submit" value="Submit">
+                    <input type="reset" name="reset" value="Reset">
                 </td>
             </tr>
         </table>
     </form>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-        <fieldset style="width: 200px; display: inline-block;">
-            <legend>Degree</legend>
-            <input type="checkbox" name="degree[]" value="SSC" <?php if (isset($degree) && in_array('SSC', $degree)) echo "checked"; ?>><label>SSC</label>
-            <input type="checkbox" name="degree[]" value="HSC" <?php if (isset($degree) && in_array('HSC', $degree)) echo "checked"; ?>><label>HSC</label>
-            <input type="checkbox" name="degree[]" value="BSc" <?php if (isset($degree) && in_array('BSc', $degree)) echo "checked"; ?>><label>BSc</label>
-        </fieldset>
-        <strong><span><?php echo $degreeErr;?></span></strong><br>
-        <input name="degreeSubmit" type="submit" value="Submit"><br><br>
-    </form>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-        <div style="border-bottom: 1px solid black; padding-bottom: 10px; margin-bottom: 10px; display: inline-block;">
-            <label>Blood Group</label>
-            <select name="blood">
-                <option value="0">Select</option>
-                <option value="A+" <?php if (isset($blood) && $blood == "A+") echo "selected"; ?>>A+</option>
-                <option value="A-" <?php if (isset($blood) && $blood == "A-") echo "selected"; ?>>A-</option>
-                <option value="B+" <?php if (isset($blood) && $blood == "B+") echo "selected"; ?>>B+</option>
-                <option value="B-" <?php if (isset($blood) && $blood == "B-") echo "selected"; ?>>B-</option>
-                <option value="AB+" <?php if (isset($blood) && $blood == "AB+") echo "selected"; ?>>AB+</option>
-                <option value="AB-" <?php if (isset($blood) && $blood == "AB-") echo "selected"; ?>>AB-</option>
-                <option value="O+" <?php if (isset($blood) && $blood == "O+") echo "selected"; ?>>O+</option>
-                <option value="O-" <?php if (isset($blood) && $blood == "O-") echo "selected"; ?>>O-</option>
-            </select>
-        </div>
-        <strong><span><?php echo $bloodErr;?></span></strong><br>
-        <input name="bloodSubmit" type="submit" value="Submit"><br><br>
-    </form>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-    <table>
-        <tr>
-            <td>
-                <fieldset style="width: 200px; display: inline-block;">
-                    <legend>Profile Picture</legend>
-                    <label>User ID</label>
-                    <input type="number" name="uid" value="<?php echo $uid;?>"><br>
-                    <label>Picture</label>
-                    <input type="file" name="pic"><br>
-                    <input name="profileSubmit" type="submit" value="Submit">
-                </fieldset>
-            </td>
-            <td>
-                <strong><span><?php echo $picErr;?></span></strong><br>
-            </td>
-        </tr>
-    </table>
-    </form>
 </body>
+
 </html>
