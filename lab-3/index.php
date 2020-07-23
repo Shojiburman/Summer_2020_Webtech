@@ -92,6 +92,15 @@
                 $emailErr = 'Email is required';
             }
         }
+        
+        if (isset($_POST['genderSubmit'])) {
+            if (empty($_POST["gender"])) {
+               $genderErr = "Gender is required";
+            } else {
+                $gender = $_POST['gender'];
+            }
+        }
+            
 
         function validateName($string) {
             $array = str_split($string);
@@ -153,9 +162,9 @@
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <fieldset style="width: 200px; display: inline-block;">
             <legend>Gender</legend>
-            <input type="radio" name="gender" value="Male"><label>Male</label>
-            <input type="radio" name="gender" value="Female"><label>Female</label>
-            <input type="radio" name="gender" value="Other"><label>Other</label>
+            <input type="radio" name="gender" value="Male" <?php if (isset($gender) && $gender == "Male") echo "checked"; ?>><label>Male</label>
+            <input type="radio" name="gender" value="Female" <?php if (isset($gender) && $gender == "Female") echo "checked"; ?>><label>Female</label>
+            <input type="radio" name="gender" value="Other" <?php if (isset($gender) && $gender == "Other") echo "checked"; ?>><label>Other</label>
         </fieldset>
         <strong><span><?php echo $genderErr;?></span></strong><br>
         <input name="genderSubmit" type="submit" value="Submit"><br><br>
