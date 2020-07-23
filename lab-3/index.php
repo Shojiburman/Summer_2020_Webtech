@@ -68,7 +68,7 @@
                                     $domainName = str_replace('.' . $domainExt, "", $domainPart);
                                     if (strlen($domainName) > 0 && validateDomainName($domainName)) {
                                         if (strlen($domainExt) > 1 && validateDomainExt($domainExt)) {} else {
-                                            $emailErr = 'Email must have more than 1 letter and letters only after last "."';
+                                            $emailErr = 'Email must have more than 1 letter and letters only after last ".", should not start with number.';
                                         }
                                     } else {
                                         $emailErr = 'Email can only have dot(.), dash(-), chracters and numbers between "@" and last "." with no adjacent "@" or "."';
