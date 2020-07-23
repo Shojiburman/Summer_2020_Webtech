@@ -23,8 +23,8 @@
 <body>
     <?php
 
-        $nameErr = $emailErr = $genderErr = $websiteErr = $dateErr = $degreeErr = $bloodErr = $picErr = "";
-        $name = $email = $gender = $date = $blood = $pic = "";
+        $nameErr = $emailErr = $genderErr = $websiteErr = $dateErr = $degreeErr = $bloodErr = $picErr = $uidErr = "";
+        $name = $email = $gender = $date = $blood = $pic = $uid = "";
         $degree = [];
 
         if (isset($_POST['nameSubmit'])) {
@@ -61,12 +61,11 @@
                             if (strpos($email, '@') != 0) {
                                 if (substr_count($email, '.') != 0) {
                                     $atpos = strpos($email, '@');
-                                    $domainPart = substr($email, $atpos);
+                                    $domainPart = substr($email, $atpos + 1);
 
                                     $dotpos = strrpos($domainPart, '.');
-                                    $domainExt = substr($domainPart, $dotpos);
-                                    $domainName = str_replace($domainExt,"", $domainPart);
-
+                                    $domainExt = substr($domainPart, $dotpos + 1);
+                                    $domainName = str_replace('.' . $domainExt, "", $domainPart);
                                     if (strlen($domainName) > 0 && validateDomainName($domainName)) {
                                         if (strlen($domainExt) > 1 && validateDomainExt($domainExt)) {} else {
                                             $emailErr = 'Email must have more than 1 letter and letters only after last "."';
@@ -104,11 +103,13 @@
 
         if (isset($_POST['dobSubmit'])) {
             if (empty($_POST["year"])) {
-               $dateErr = "Year(yyyy) is required";
+                $year = $_POST["year"];
+                $dateErr = "Year(yyyy) is required";
             } else {
                 $year = intval(trim($_POST['year']));
                 if ($year < 2017 && $year > 1899) {
                     if (empty($_POST["month"])) {
+                        $month = $_POST["month"];
                         $dateErr = "Month(mm) is required";
                     } else {
                         $month = intval(trim($_POST['month']));
@@ -116,7 +117,8 @@
                             $longmm = [1, 3, 5, 7, 8, 10, 12];
                             $shortmm = [4, 6, 9, 11];
                             if (empty($_POST["date"])) {
-                               $dateErr = "Date(dd) is required";
+                                $date = $_POST["date"];
+                                $dateErr = "Date(dd) is required";
                             } else {
                                 $date = intval(trim($_POST['date']));
                                 if (in_array($month, $longmm)) {
@@ -164,7 +166,23 @@
                 $blood = $_POST['blood'];
             }
         }
-            
+
+        if (isset($_POST['profileSubmit'])) {
+            if(empty($_POST["pic"])) {
+                $picErr = "Picture is required";
+            } else {
+                $pic = $_POST["pic"];
+            }
+            if(empty($_POST["uid"])) {
+                $uid = $_POST["uid"];
+                $picErr = "User ID is required";
+            } else if(intval($_POST["uid"]) < 1) {
+                $uid = $_POST["uid"];
+                $picErr = "User ID must be postive";
+            } else {
+                $uid = $_POST["uid"];
+            }
+        }            
 
         function validateName($string) {
             $array = str_split($string);
@@ -299,9 +317,9 @@
                 <fieldset style="width: 200px; display: inline-block;">
                     <legend>Profile Picture</legend>
                     <label>User ID</label>
-                    <input type="number" name="uid" value="<?php echo $uid;?>" min="0"><br>
+                    <input type="number" name="uid" value="<?php echo $uid;?>"><br>
                     <label>Picture</label>
-                    <input type="file" name="pic"><br>
+                    <input type="file" name="pic" value="<?php echo $pic;?>" ><br>
                     <input name="profileSubmit" type="submit" value="Submit">
                 </fieldset>
             </td>
