@@ -100,7 +100,7 @@
                 $gender = $_POST['gender'];
             }
         }
-        
+
         if (isset($_POST['dobSubmit'])) {
             if (empty($_POST["year"])) {
                $dateErr = "Year(yyyy) is required";
@@ -147,6 +147,15 @@
                 }
             }
         }   
+
+        if (isset($_POST['degreeSubmit'])) {
+            if (empty($_POST["degree"])) {
+                $degree = [];
+               $degreeErr = "Degree is required";
+            } else {
+                $degree = $_POST['degree'];
+            }
+        }
 
         function validateName($string) {
             $array = str_split($string);
@@ -249,9 +258,9 @@
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <fieldset style="width: 200px; display: inline-block;">
             <legend>Degree</legend>
-            <input type="checkbox" name="degree" value="SSC"><label>SSC</label>
-            <input type="checkbox" name="degree" value="HSC"><label>HSC</label>
-            <input type="checkbox" name="degree" value="BSc"><label>BSc</label>
+            <input type="checkbox" name="degree[]" value="SSC" <?php if (isset($degree) && in_array('SSC', $degree)) echo "checked"; ?>><label>SSC</label>
+            <input type="checkbox" name="degree[]" value="HSC" <?php if (isset($degree) && in_array('HSC', $degree)) echo "checked"; ?>><label>HSC</label>
+            <input type="checkbox" name="degree[]" value="BSc" <?php if (isset($degree) && in_array('BS', $degree)) echo "checked"; ?>><label>BSc</label>
         </fieldset>
         <strong><span><?php echo $degreeErr;?></span></strong><br>
         <input name="degreeSubmit" type="submit" value="Submit"><br><br>
