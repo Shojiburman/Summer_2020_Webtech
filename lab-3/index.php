@@ -24,7 +24,8 @@
     <?php
 
         $nameErr = $emailErr = $genderErr = $websiteErr = $dateErr = $degreeErr = $bloodErr = $picErr = "";
-        $name = $email = $gender = $date = $degree = $blood = $pic = "";
+        $name = $email = $gender = $date = $blood = $pic = "";
+        $degree = [];
 
         if (isset($_POST['nameSubmit'])) {
             if (isset($_POST['name'])) {
@@ -150,12 +151,20 @@
 
         if (isset($_POST['degreeSubmit'])) {
             if (empty($_POST["degree"])) {
-                $degree = [];
                $degreeErr = "Degree is required";
             } else {
                 $degree = $_POST['degree'];
             }
         }
+
+        if (isset($_POST['blood'])) {
+            if (empty($_POST["blood"]) || $_POST["blood"] == '0') {
+                $bloodErr = "Blood group required";
+            } else {
+                $blood = $_POST['blood'];
+            }
+        }
+            
 
         function validateName($string) {
             $array = str_split($string);
@@ -269,14 +278,15 @@
         <div style="border-bottom: 1px solid black; padding-bottom: 10px; margin-bottom: 10px; display: inline-block;">
             <label>Blood Group</label>
             <select name="blood">
-                <option value="A+">A+</option>
-                <option value="A-">A-</option>
-                <option value="B+">B+</option>
-                <option value="B-">B-</option>
-                <option value="AB+">AB+</option>
-                <option value="AB-">AB-</option>
-                <option value="O+">O+</option>
-                <option value="O-">O-</option>
+                <option value="0">Select</option>
+                <option value="A+" <?php if (isset($blood) && $blood == "A+") echo "selected"; ?>>A+</option>
+                <option value="A-" <?php if (isset($blood) && $blood == "A-") echo "selected"; ?>>A-</option>
+                <option value="B+" <?php if (isset($blood) && $blood == "B+") echo "selected"; ?>>B+</option>
+                <option value="B-" <?php if (isset($blood) && $blood == "B-") echo "selected"; ?>>B-</option>
+                <option value="AB+" <?php if (isset($blood) && $blood == "AB+") echo "selected"; ?>>AB+</option>
+                <option value="AB-" <?php if (isset($blood) && $blood == "AB-") echo "selected"; ?>>AB-</option>
+                <option value="O+" <?php if (isset($blood) && $blood == "O+") echo "selected"; ?>>O+</option>
+                <option value="O-" <?php if (isset($blood) && $blood == "O-") echo "selected"; ?>>O-</option>
             </select>
         </div>
         <strong><span><?php echo $bloodErr;?></span></strong><br>
