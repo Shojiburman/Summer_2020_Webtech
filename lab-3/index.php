@@ -92,7 +92,7 @@
                 $emailErr = 'Email is required';
             }
         }
-        
+
         if (isset($_POST['genderSubmit'])) {
             if (empty($_POST["gender"])) {
                $genderErr = "Gender is required";
@@ -100,7 +100,53 @@
                 $gender = $_POST['gender'];
             }
         }
-            
+        
+        if (isset($_POST['dobSubmit'])) {
+            if (empty($_POST["year"])) {
+               $dateErr = "Year(yyyy) is required";
+            } else {
+                $year = intval(trim($_POST['year']));
+                if ($year < 2017 && $year > 1899) {
+                    if (empty($_POST["month"])) {
+                        $dateErr = "Month(mm) is required";
+                    } else {
+                        $month = intval(trim($_POST['month']));
+                        if ($month > 0 && $month < 13){
+                            $longmm = [1, 3, 5, 7, 8, 10, 12];
+                            $shortmm = [4, 6, 9, 11];
+                            if (empty($_POST["date"])) {
+                               $dateErr = "Date(dd) is required";
+                            } else {
+                                $date = intval(trim($_POST['date']));
+                                if (in_array($month, $longmm)) {
+                                    if ($date > 31 || $date < 1) {
+                                       $dateErr = "Date(dd) must be between 1 -31";
+                                    }
+                                } else if (in_array($month, $shortmm)) {
+                                    if ($date > 30 || $date < 1) {
+                                       $dateErr = "Date(dd) must be between 1 -30";
+                                    }
+                                } else if ($month == 2) {
+                                    if ((($year % 4 == 0) && ($year % 100!= 0)) || ($year % 400 == 0)) {
+                                        if ($date > 29 || $date < 1) {
+                                           $dateErr = "Date(dd) must be between 1 -29";
+                                        }
+                                    } else {
+                                        if ($date > 28 || $date < 1) {
+                                           $dateErr = "Date(dd) must be between 1 -28";
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            $dateErr = "Month(mm) must be between 1 -12";
+                        }                            
+                    }
+                } else {
+                    $dateErr = "Year(yyyy) must be between 1900 - 2016";
+                }
+            }
+        }   
 
         function validateName($string) {
             $array = str_split($string);
@@ -184,11 +230,11 @@
                                     <td align="center">yyyy</td>
                                 </tr>
                                 <tr>
-                                    <td style="padding-bottom: 10px"><input min="1" max="31" type="number" name="date" value="<?php echo $date;?>" placeholder="" size="1px"></td>
+                                    <td style="padding-bottom: 10px"><input type="number" name="date" value="<?php echo $date;?>" placeholder="" size="1px"></td>
                                     <td style="padding-bottom: 10px"><strong style="color: black"> / </strong></td>
-                                    <td style="padding-bottom: 10px"><input min="1" max="12" type="number" name="month" value="<?php echo $month;?>" placeholder="" size="1px"></td>
+                                    <td style="padding-bottom: 10px"><input type="number" name="month" value="<?php echo $month;?>" placeholder="" size="1px"></td>
                                     <td style="padding-bottom: 10px"><strong style="color: black"> / </strong></td>
-                                    <td style="padding-bottom: 10px"><input min="1990" max="2016" type="number" name="year" value="<?php echo $year;?>" placeholder="" size="2px"></td>
+                                    <td style="padding-bottom: 10px"><input type="number" name="year" value="<?php echo $year;?>" placeholder="" size="2px"></td>
                                 </tr>
                                 <tr><td colspan="5" style="border-top: 1px solid black; padding-top: 10px"><input name="dobSubmit" type="submit" value="Submit"></td></tr>
                             </table>
