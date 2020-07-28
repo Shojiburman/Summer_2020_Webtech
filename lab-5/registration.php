@@ -155,7 +155,7 @@
             }
         }
 
-        if (isset($nameErr) || isset($unameErr) || isset($emailErr) && isset($passErr) || isset($genderErr) || (isset($dateErr))) {} else {
+        if (isset($nameErr) || isset($unameErr) || isset($emailErr) || isset($passErr) || isset($genderErr) || (isset($dateErr))) {} else {
             setcookie('name', $name, time() + (10 * 365 * 24 * 60 * 60));
             setcookie('email', $email, time() + (10 * 365 * 24 * 60 * 60));
             setcookie('uname', $uname, time() + (10 * 365 * 24 * 60 * 60));
@@ -240,9 +240,9 @@
     <table width="500px" border="1" cellpadding="0" cellspacing="0" align="center">
         <tr height="50px">
             <td colspan="2" align="right">
-                <a href="publicHome.html">Home</a>
-                <a href="registration.html">Registration</a>
-                <a href="login.html">Login</a>
+                <a href="publicHome.php">Home</a>
+                <a href="registration.php">Registration</a>
+                <a href="login.php">Login</a>
             </td>
         </tr>
         <tr height="auto">
@@ -338,26 +338,26 @@
                                 <td></td>
                             </tr>
                         </table>
-                        <hr />
+                        <hr/>
                         <?php 
-                                if (isset($nameErr)) {
-                                    echo "<strong><span>" . $nameErr . "</span></strong><br/>";
-                                }
-                                if (isset($emailErr)) {
-                                    echo "<strong><span>" . $emailErr . "</span></strong><br/>";
-                                }
-                                if (isset($unameErr)) {
-                                    echo "<strong><span>" . $unameErr . "</span></strong><br/>";
-                                }
-                                if (isset($passErr)) {
-                                    echo "<strong><span>" . $passErr . "</span></strong><br/>";
-                                }
-                                if (isset($genderErr)) {
-                                    echo "<strong><span>" . $genderErr . "</span></strong><br/>";
-                                }
-                                if (isset($dateErr)) {
-                                    echo "<strong><span>" . $dateErr . "</span></strong><br/>";
-                                }
+                            if (isset($nameErr)) {
+                                echo "<strong><span>" . $nameErr . "</span></strong><br/>";
+                            }
+                            if (isset($emailErr)) {
+                                echo "<strong><span>" . $emailErr . "</span></strong><br/>";
+                            }
+                            if (isset($unameErr)) {
+                                echo "<strong><span>" . $unameErr . "</span></strong><br/>";
+                            }
+                            if (isset($passErr)) {
+                                echo "<strong><span>" . $passErr . "</span></strong><br/>";
+                            }
+                            if (isset($genderErr)) {
+                                echo "<strong><span>" . $genderErr . "</span></strong><br/>";
+                            }
+                            if (isset($dateErr)) {
+                                echo "<strong><span>" . $dateErr . "</span></strong><br/>";
+                            }
                         ?>
                         <br/>
                         <input name="submit" type="submit" value="Submit">

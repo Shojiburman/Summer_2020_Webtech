@@ -23,7 +23,7 @@
 			$_SESSION['user'] 		= $user;
 
 
-			header('location: login.html');
+			header('location: login.php');
 		}
 
 	}else{

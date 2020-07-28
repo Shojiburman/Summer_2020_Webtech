@@ -1,3 +1,12 @@
+<?php
+    session_start(); 
+
+    if(isset($_SESSION['login_user'])){
+        header("location:dashboard.php");
+        die();
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -9,9 +18,9 @@
     <table width="500px" border="1" cellpadding="0" cellspacing="0" align="center">
         <tr height="50px">
             <td colspan="2" align="right">
-                <a href="publicHome.html">Home</a>
-                <a href="registration.html">Registration</a>
-                <a href="login.html">Login</a>
+                <a href="publicHome.php">Home</a>
+                <a href="registration.php">Registration</a>
+                <a href="login.php">Login</a>
             </td>
         </tr>
         <tr height="120px">

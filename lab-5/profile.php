@@ -10,7 +10,7 @@
 				<td rowspan="7" align="center">
 					<img width="128" src="../image/user.png"/>
                     <br/>
-                    <a href="../write/picture.html">Change</a>
+                    <a href="../write/picture.php">Change</a>
 				</td>
 			</tr>		
 			<tr><td colspan="3"><hr/></td></tr>
@@ -33,6 +33,6 @@
 			</tr>
 		</table>	
         <hr/>
-        <a href="../write/edit_profile.html">Edit Profile</a>	
+        <a href="../write/edit_profile.php">Edit Profile</a>	
 	</form>
 </fieldset>
