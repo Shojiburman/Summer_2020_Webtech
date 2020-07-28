@@ -44,7 +44,7 @@
         <tr height="50px">
             <td colspan="2" align="right">
                 <p style="display: inline-block;">Logged in as <?php echo $_COOKIE['name']; ?></p>
-                <a href="login.php">Logout</a>
+                <a href="logout.php">Logout</a>
             </td>
         </tr>
         <tr>

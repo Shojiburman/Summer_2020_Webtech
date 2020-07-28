@@ -39,7 +39,7 @@
         }
 
         if (isset($_POST['pass'])) {
-            $pass = trim($_POST['pass']);
+            $pass = $_POST['pass'];
             if ($pass == '') {
                 $passErr = 'Password can not be empty';
             }
@@ -48,7 +48,7 @@
         }
 
         if (isset($_POST['confPass'])) {
-            $confPass = trim($_POST['confPass']);
+            $confPass = $_POST['confPass'];
             if ($confPass == '') {
                 $passErr = 'Confirm Password can not be empty';
             } else {
@@ -166,7 +166,7 @@
             setcookie('yy', $year, time() + (10 * 365 * 24 * 60 * 60));
             header('location: login.php');
         }            
-    }            
+    }
 
     function validateName($string) {
         $array = str_split($string);

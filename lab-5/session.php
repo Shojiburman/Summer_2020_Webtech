@@ -8,19 +8,19 @@
 	    if (!isset($_COOKIE['uname'])) {
 	    	session_destroy();
 	    	setcookie('remember', "");
-	        header("location:index.php");
+	        header("location:login.php");
 	        die();
 	    }
 	    if ($current_user == '' || $current_user != $_COOKIE['uname']) {
 			session_destroy();
 			setcookie('remember', "");
-	        header("location:index.php");
+	        header("location:login.php");
 	        die();
 	    }
 	} else {
 		session_destroy();
 		setcookie('remember', "");
-	    header("location:index.php");
+	    header("location:login.php");
 	    die();
 	}
 ?>
