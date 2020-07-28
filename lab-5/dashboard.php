@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <table width="500px" border="1" cellpadding="0" cellspacing="0" align="center">
+    <table width="1000px" border="1" cellpadding="0" cellspacing="0" align="center">
         <tr height = "50px">
             <td colspan="2" align="right">
                 <p style="display: inline-block;">Logged in as <?php echo $_COOKIE['name']; ?></p>
@@ -19,7 +19,7 @@
             </td>
         </tr>
         <tr height = "120px">
-            <td width="200px" style="padding: 0px 10px">
+            <td width="250px" style="padding: 0px 10px">
                 <strong><p style="border-bottom: 1px solid black; padding: 10px 0">Account</p></strong>
                 <ul>
                     <li><a href="dashboard.php">Dashboard</a></li>

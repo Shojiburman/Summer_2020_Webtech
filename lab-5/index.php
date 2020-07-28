@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <table width="500px" border="1" cellpadding="0" cellspacing="0" align="center">
+    <table width="1000px" border="1" cellpadding="0" cellspacing="0" align="center">
         <tr height = "50px">
             <td colspan="2" align="right"><a href="#">Home</a>
                 <a href="registration.php">Registration</a>
