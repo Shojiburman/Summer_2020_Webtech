@@ -231,7 +231,7 @@
                     <table>
                         <tr>
                             <td>
-                                <form method="post" action="">
+                                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                                     <br />
                                     <table width="100%" cellpadding="0" cellspacing="0">
                                         <tr>

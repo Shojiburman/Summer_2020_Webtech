@@ -1,12 +1,42 @@
 <?php
     session_start();
     include 'session.php';
+    $pic = 'profile.png';
+    if (isset($_COOKIE['pic'])) {
+        $pic = $_COOKIE['pic'];
+    }
+    if (isset($_POST['submit'])) {
+        if (isset($_POST['photo']) && $_POST['photo'] != '') {
+            $photo = $_POST['photo'];
+            setcookie('pic', $photo, time() + (10 * 365 * 24 * 60 * 60));
+            header('location: viewProfile.php');
+        } else {
+            $picErr = 'Photo is required';
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Profile Picture</title>
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+          -moz-appearance: textfield;
+        }
+
+        strong {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,9 +49,9 @@
         </tr>
         <tr>
             <td width="150px" style="padding: 0px 10px" align="top">
-                <strong>
+                <b>
                     <p style="border-bottom: 1px solid black; padding: 10px 0">Account</p>
-                </strong>
+                </b>
                 <ul>
                     <li><a href="dashboard.php">Dashboard</a></li>
                     <li><a href="viewProfile.php">Veiw Profile</a></li>
@@ -37,17 +67,19 @@
                     <table>
                         <tr>
                             <td>
-                                <form method="post" action="">
+                                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                                     <br />
                                     <table cellpadding="0" cellspacing="0">
                                         <tr>
                                             <td colspan="4">
-                                                <img width="80px" src="profile.png">
-                                                <input type="file" name="pic"><br>
+                                                <img width="80px" src="<?php echo $pic; ?>">
+                                                <input type="file" name="photo"><br>
                                             </td>
                                         </tr>
                                     </table>
                                     <hr />
+                                    <?php if (isset($picErr)) { echo '<strong>' . $picErr . '</strong><br/><br/>'; } ?>
+
                                     <input name="submit" type="submit" value="Submit">
                                 </form>
                             </td>
