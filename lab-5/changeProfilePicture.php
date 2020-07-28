@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    include 'session.php';
+?>
 <!DOCTYPE html>
 <html>
 
@@ -9,7 +13,7 @@
     <table width="500px" border="1" cellpadding="0" cellspacing="0" align="center">
         <tr height="50px">
             <td colspan="2" align="right">
-                <p style="display: inline-block;">Logged in as Bob</p>
+                <p style="display: inline-block;">Logged in as <?php echo $_COOKIE['name']; ?></p>
                 <a href="login.php">Logout</a>
             </td>
         </tr>

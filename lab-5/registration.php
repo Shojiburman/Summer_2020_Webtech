@@ -1,7 +1,7 @@
 <?php
     session_start(); 
 
-    if(isset($_SESSION['login_user'])){
+    if(isset($_SESSION['login_user']) || isset($_COOKIE['remember'])){
         header("location:dashboard.php");
         die();
     }
@@ -254,7 +254,7 @@
                         <table width="100%" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td>Name</td>
-                                <td>:</td>
+                                <td>: </td>
                                 <td><input type="text" name="name" value="<?php echo $name;?>"></td>
                                 <td></td>
                             </tr>
@@ -265,7 +265,7 @@
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td>:</td>
+                                <td>: </td>
                                 <td>
                                     <input type="text" name="email" value="<?php echo $email;?>">
                                     <abbr title="hint: sample@example.com"><b>i</b></abbr>
@@ -279,7 +279,7 @@
                             </tr>
                             <tr>
                                 <td>User Name</td>
-                                <td>:</td>
+                                <td>: </td>
                                 <td><input type="text" name="uname" value="<?php echo $uname;?>"></td>
                                 <td></td>
                             </tr>
@@ -290,7 +290,7 @@
                             </tr>
                             <tr>
                                 <td>Password</td>
-                                <td>:</td>
+                                <td>: </td>
                                 <td><input name="pass" type="password"></td>
                                 <td></td>
                             </tr>
@@ -301,7 +301,7 @@
                             </tr>
                             <tr>
                                 <td>Confirm Password</td>
-                                <td>:</td>
+                                <td>: </td>
                                 <td><input name="confPass" type="password"></td>
                                 <td></td>
                             </tr>
@@ -314,9 +314,9 @@
                                 <td colspan="3">
                                     <fieldset>
                                         <legend>Gender</legend>
-                                        <input type="radio" name="gender" value="Male" <?php if (isset($gender) && $gender == "Male") echo "checked"; ?>><label>Male</label>
-                                        <input type="radio" name="gender" value="Female" <?php if (isset($gender) && $gender == "Female") echo "checked"; ?>><label>Female</label>
-                                        <input type="radio" name="gender" value="Other" <?php if (isset($gender) && $gender == "Other") echo "checked"; ?>><label>Other</label>
+                                        <input id="male" type="radio" name="gender" value="Male" <?php if (isset($gender) && $gender == "Male") echo "checked"; ?>><label for="male">Male</label>
+                                        <input id="female" type="radio" name="gender" value="Female" <?php if (isset($gender) && $gender == "Female") echo "checked"; ?>><label for="female">Female</label>
+                                        <input id="other" type="radio" name="gender" value="Other" <?php if (isset($gender) && $gender == "Other") echo "checked"; ?>><label for="other">Other
                                     </fieldset>
                                 </td>
                                 <td></td>

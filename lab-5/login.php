@@ -2,7 +2,7 @@
     session_start(); 
     $uname = $pass = "";
     $remember = [];
-    if(isset($_SESSION['login_user'])){
+    if(isset($_SESSION['login_user']) || isset($_COOKIE['remember'])){
         header("location:dashboard.php");
         die();
     }
@@ -36,6 +36,7 @@
                     if (isset($remember) && in_array('yes', $remember)) {
                         setcookie('remember', $uname, time() + (10 * 365 * 24 * 60 * 60));
                     } else {
+                        $_SESSION['login_user'] = $uname;
                         setcookie('remember', "");
                     }
                     header('location: dashboard.php');
@@ -77,14 +78,16 @@
                         <table>
                             <tr>
                                 <td>Username</td>
+                                <td>: </td>
                                 <td><input type="text" name="uname" value="<?php echo $uname;?>"></td>
                             </tr>
                             <tr>
                                 <td>Password</td>
+                                <td>: </td>
                                 <td style="padding-bottom: 10px;"><input type="password" name="pass" value="<?php echo $pass;?>"></td>
                             </tr>
                             <tr>
-                                <td colspan="2" style="border-top: 1px solid black; padding-top: 10px;">
+                                <td colspan="3" style="border-top: 1px solid black; padding-top: 10px;">
                                     <input id="remember" type="checkbox" name="remember[]" value="yes" <?php if (isset($remember) && in_array('yes', $remember)) echo "checked"; ?>><label for="remember">Remember me</label> <br> <br>
                                     <input type="submit" name="submit" value="Submit">
                                     <a href="forgotPassword.php">Forgot Password?</a>
