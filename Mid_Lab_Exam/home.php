@@ -5,6 +5,7 @@
 
 	if($_SESSION['status'] == "Ok"){ 
 
+		$user = $_SESSION['login_user']
 ?>
 	
 <!DOCTYPE html>
@@ -14,7 +15,7 @@
 </head>
 <body>
 
-	<h1>Welcome home!</h1> <a href="logout.php"> Logout</a>
+	<h1>Welcome <?php echo $user?> </h1> <a href="logout.php"> Logout</a>
 </body>
 </html>
 

@@ -5,6 +5,8 @@
 
 		$name 		= $_POST['name'];
 		$password 	= $_POST['password'];
+		
+		$_SESSION['login_user'] = $name;
 
 		if(empty($name) || empty($password)){
 			echo "null submission";
