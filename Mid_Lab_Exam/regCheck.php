@@ -15,7 +15,7 @@
 		}else {
 
 			$file = fopen('user.txt', 'a');
-			fwrite($file, $id.'|'.$name.'|'.$password.'|'.$email."/r/n");
+			fwrite($file, $name.'|'.$password.'|'.$email.'|'.$id."/r/n");
 			fclose($file);
 
 			header('location: login.html');
