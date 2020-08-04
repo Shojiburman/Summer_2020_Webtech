@@ -44,7 +44,25 @@
                     $passErr = 'Wrong credentials';
                 }
             } else {
-                $passErr = 'New user? Register first';
+                $file = fopen('user.txt', 'r');
+                $data = fread($file, filesize('user.txt'));
+                $userData = explode("|",$data);
+                $i = 0;
+                foreach ($userData as $us) {
+                    if(trim($us) == $uname){
+                        if(trim($userData[$i+1]) == $pass){
+                            $_SESSION['status']  = "Ok";
+                            if(isset($remember) && in_array('yes', $remember)){
+                                setcookie('remember', $uname, time() + (10 * 365 * 24 * 60 * 60));
+                            }
+                            header('location: home.php');
+                        }
+                    }else{
+                        $passErr = 'Invalid username/password     New user? Register first';
+                    }
+                    $i++;
+                } 
+                fclose($file);
             }            
         }            
     } 

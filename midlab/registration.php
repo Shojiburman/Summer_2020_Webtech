@@ -54,6 +54,15 @@
             $passErr = 'Confirm Password is required';
         }
 
+        if (isset($_POST['uType'])) {
+            $confPass = $_POST['uType'];
+            if ($confPass == '') {
+                $utypeErr = 'User Type can not be empty';
+            }
+        } else {
+            $utypeErr = 'User Type is required';
+        }
+
         if (isset($_POST['email'])) {
             $email = trim($_POST['email']);
             if (!$email == '') {
@@ -95,14 +104,14 @@
             $emailErr = 'Email is required';
         }
 
-        if (isset($idErr) || isset($unameErr) || isset($emailErr) || isset($passErr) || isset($genderErr) || (isset($dateErr))) {} else {
+        if (isset($idErr) || isset($unameErr) || isset($emailErr) || isset($passErr) || (isset($utypeErr))) {} else {
             /*setcookie('id', $id, time() + (10 * 365 * 24 * 60 * 60));
             setcookie('email', $email, time() + (10 * 365 * 24 * 60 * 60));
             setcookie('uname', $uname, time() + (10 * 365 * 24 * 60 * 60));
             setcookie('pass', $pass, time() + (10 * 365 * 24 * 60 * 60));*/
 
             $file = fopen('user.txt', 'a');
-            fwrite($file, $id.'|'.$email.'|'.$uname.'|'.$pass.'|'."\r\n");
+            fwrite($file, $id.'|'.$email.'|'.$uname.'|'.$pass.'|'.$uType.'|'."\r\n");
             fclose($file);
 
             header('location: login.php');
@@ -216,7 +225,18 @@
                                 <td>Confirm Password</td>
                                 <td><input name="confPass" type="password"></td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <label>User Type</label>
+                                    <select name="uType">
+                                        <option value="" >Select</option>
+                                        <option value="user" >User</option>
+                                        <option value="admin" >Admin</option>
+                                    </select>
+                                </td>
+                            </tr>
                         </table>
+                        <br />
                         <?php 
                             if (isset($idErr)) {
                                 echo "<strong><span>" . $idErr . "</span></strong><br/>";
@@ -229,6 +249,9 @@
                             }
                             if (isset($passErr)) {
                                 echo "<strong><span>" . $passErr . "</span></strong><br/>";
+                            }
+                            if (isset($utypeErr)) {
+                                echo "<strong><span>" . $utypeErr . "</span></strong><br/>";
                             }
                         ?>
                         <br/>
