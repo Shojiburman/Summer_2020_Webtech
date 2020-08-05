@@ -6,7 +6,7 @@
         die();
     }
 
-    $id = $uname = $email = "";
+    $id = $uname = $email = $uType = "";
     if (isset($_POST['submit'])) {
         if (isset($_POST['id'])) {
             $id = trim($_POST['id']);
@@ -65,7 +65,7 @@
         }
 
         if (isset($_POST['uType'])) {
-            $confPass = $_POST['uType'];
+            $uType = $_POST['uType'];
             if ($confPass == '') {
                 $utypeErr = 'User Type can not be empty';
             }
@@ -121,7 +121,7 @@
             setcookie('pass', $pass, time() + (10 * 365 * 24 * 60 * 60));*/
 
             $file = fopen('user.txt', 'a');
-            fwrite($file, $id.'|'.$email.'|'.$uname.'|'.$pass.'|'.$uType.'|'."\r\n");
+            fwrite($file, $uname.'|'.$pass.'|'.$uType.'|'.$id.'|'.$email.'|'."\r\n");
             fclose($file);
 
             header('location: login.php');

@@ -14,7 +14,7 @@
 
     <table width="1000px" border="1" cellpadding="0" cellspacing="0" align="center">
         <tr height = "50px">
-            <td colspan="2" align="right">
+            <td colspan="2" align="right" style="padding-right: 10px">
                 <p style="display: inline-block;">Logged in as <b><?php echo ucwords($_SESSION['login_user']); ?></b></p>
                 <a href="logout.php">Logout</a>
             </td>

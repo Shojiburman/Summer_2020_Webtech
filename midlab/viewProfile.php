@@ -1,16 +1,22 @@
 <?php
     session_start();
     include 'session.php';
-    $name = $_COOKIE['name'];
-    $email = $_COOKIE['email'];
-    $gender = $_COOKIE['gender'];
-    $date = $_COOKIE['dd'];
-    $month = $_COOKIE['mm'];
-    $year = $_COOKIE['yy'];
-    $pic = 'profile.png';
-    if (isset($_COOKIE['pic'])) {
-        $pic = $_COOKIE['pic'];
+    $name = $_SESSION['login_user'];
+
+    $file = fopen('user.txt', 'r');
+    $data = fread($file, filesize('user.txt'));
+    $userData = explode("|",$data);
+    $i = 0;
+    foreach ($userData as $us) {
+        if(trim($us) == $name){
+            $uType = trim($userData[$i+2]);
+            $id = trim($userData[$i+3]);
+            $email = trim($userData[$i+4]);
+            break;
+        }
+        $i++;
     }
+    fclose($file);
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,8 +28,8 @@
 <body>
     <table width="1000px" border="1" cellpadding="0" cellspacing="0" align="center">
         <tr height="50px">
-            <td colspan="2" align="right">
-                <p style="display: inline-block;">Logged in as <?php echo $name; ?> | </p>
+            <td colspan="2" align="right" style="padding-right: 10px">
+                <p style="display: inline-block;">Logged in as <b><?php echo ucwords($name); ?></b> | </p>
                 <a href="logout.php">Logout</a>
             </td>
         </tr>
@@ -34,40 +40,38 @@
                 </strong>
                 <ul>
                     <li><a href="dashboard.php">Dashboard</a></li>
-                    <li><a href="viewProfile.php">Veiw Profile</a></li>
-                    <li><a href="editProfile.php">Edit Profile</a></li>
-                    <li><a href="changeProfilePicture.php">Change Profile picture</a></li>
                     <li><a href="changePassword.php">Change Password</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
             </td>
             <td align="left" style="padding: 10px">
-                <fieldset style="width: 720px;">
-                    <legend>Profile</legend>
-                    <table>
-                        <tr>
-                            <td style="width: 500px">
-                                <p>Name : <?php echo $name; ?></p>
-                                <p>Email : <?php echo $email; ?></p>
-                                <p>Gender : <?php echo $gender; ?></p>
-                            </td>
-                            <td align="center">
-                                <img width="100px" src="<?php echo $pic; ?>">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Date of Birth : <?php echo $date . '/' . $month . '/' . $year; ?></p>
-                            </td>
-                            <td align="center">
-                                <a href="changeProfilePicture.php">change</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><a href="editProfile.php">Edit Profile</a></td>
-                        </tr>
-                    </table>
-                </fieldset>
+                <table border="1" cellpadding="5" cellspacing="0" style="width: 100%">
+                    <tr><td colspan="2" align="center" style="font-size: 1.5rem; font-weight: bold;">Profile</td></tr>
+                    <tr>
+                        <td><b>ID</b></td>
+                        <td style="width: 500px">
+                            <b><?php echo $id; ?></b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Name</b></td>
+                        <td style="width: 500px">
+                            <b><?php echo ucwords($name); ?></b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Email</b></td>
+                        <td>
+                            <b><?php echo $email; ?></b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>User Type</b></td>
+                        <td>
+                            <b><?php echo ucwords($uType); ?></b>
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
         <tr height="30px">
