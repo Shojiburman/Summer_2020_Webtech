@@ -23,19 +23,31 @@
         if (isset($_POST['confPass'])) {
             $confPass = $_POST['confPass'];
             if ($confPass == '') {
-                $passErr = 'Confirm Password can not be empty';
+                $passErr = 'Re-Password can not be empty';
             } else {
                 if (isset($pass) && ($pass == $confPass)) {
-                    if (isset($_COOKIE['pass']) && $_COOKIE['pass'] == $cpass) {
-                        setcookie('pass', $pass, time() + (10 * 365 * 24 * 60 * 60));
-                        $passSuc = 'Password updated successfully';
-                    } else {
-                        $passErr = 'Wrong credentials;';
+                    $file = fopen('user.txt', 'r');
+                    $data = fread($file, filesize('user.txt'));
+                    $userData = explode("|",$data);
+                    $i = 0;
+                    foreach ($userData as $us) {
+                        if(trim($us) == trim($_SESSION['login_user'])){
+                            if(trim($userData[$i+1]) == $cpass){
+                                $filedata = file_get_contents('user.txt');
+                                $repP = trim($_SESSION['login_user']) . "|" . $cpass;
+                                $repA = trim($_SESSION['login_user']) . "|" . $pass;
+                                $strReplace = str_replace($repP, $repA, $filedata);
+                                file_put_contents('user.txt', $strReplace);
+                            }
+                        }
+                        $i++;
                     }
-                } else {
-                    $passErr = 'Retype Password &  New Password must match';
+                    fclose($file);
+                    $passSuc = 'Password updated successfully';
+                    } else {
+                        $passErr = 'Retype Password &  New Password must match';
+                    }
                 }
-            }
         } else {
             $passErr = 'Retype Password is required';
         }
@@ -72,8 +84,8 @@
 <body>
     <table width="1000px" border="1" cellpadding="0" cellspacing="0" align="center">
         <tr height="50px">
-            <td colspan="2" align="right">
-                <p style="display: inline-block;">Logged in as <?php echo $_COOKIE['name']; ?></p>
+            <td colspan="2" align="right" style="padding-right: 10px">
+                <p style="display: inline-block;">Logged in as <b><?php echo ucwords($_SESSION['login_user']); ?></b></p>
                 <a href="logout.php">Logout</a>
             </td>
         </tr>
@@ -85,15 +97,12 @@
                 <ul>
                     <li><a href="dashboard.php">Dashboard</a></li>
                     <li><a href="viewProfile.php">Veiw Profile</a></li>
-                    <li><a href="editProfile.php">Edit Profile</a></li>
-                    <li><a href="changeProfilePicture.php">Change Profile picture</a></li>
-                    <li><a href="changePassword.php">Change Password</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
             </td>
             <td align="left" style="padding: 10px">
                 <fieldset>
-                    <legend>EDIT PROFILE</legend>
+                    <legend>Change Password</legend>
                     <table>
                         <tr>
                             <td>
@@ -108,7 +117,7 @@
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td style="color: green">New password</td>
+                                            <td>New password</td>
                                             <td>:</td>
                                             <td>
                                                 <input name="pass" type="password">
@@ -116,7 +125,7 @@
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td style="color: red">Retype password</td>
+                                            <td>Retype password</td>
                                             <td>:</td>
                                             <td>
                                                 <input name="confPass" type="password">
@@ -127,7 +136,7 @@
                                     <hr />
                                     <?php if (isset($passErr)) { echo '<strong>' . $passErr . '</strong><br/><br/>'; } ?>
                                     <?php if (isset($passSuc)) { echo '<em>' . $passSuc . '</em><br/><br/>'; } ?>
-                                    <input name="submit" type="submit" value="Submit">
+                                    <input name="submit" type="submit" value="Change">
                                 </form>
                             </td>
                         </tr>
