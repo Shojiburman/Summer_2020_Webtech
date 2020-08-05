@@ -48,41 +48,40 @@
                         <?php } ?> 
                     </li>
                     <li><a href="changePassword.php">Change Password</a></li>
-                    <?php if($_SESSION['uType'] == 'admin'){ ?>
-                        <li>
-                            <a href="viewUsers.php">View Users</a>
-                        </li>
-                    <?php } ?>
+                    <li><a href="viewUsers.php">View Users</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
             </td>
             <td align="left" style="padding: 10px">
                 <table border="1" cellpadding="5" cellspacing="0" style="width: 100%">
-                    <tr><td colspan="2" align="center" style="font-size: 1.5rem; font-weight: bold;">Profile</td></tr>
                     <tr>
-                        <td><b>ID</b></td>
-                        <td style="width: 500px">
-                            <b><?php echo $id; ?></b>
-                        </td>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>User Type</th>
                     </tr>
-                    <tr>
-                        <td><b>Name</b></td>
-                        <td style="width: 500px">
-                            <b><?php echo ucwords($name); ?></b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><b>Email</b></td>
-                        <td>
-                            <b><?php echo $email; ?></b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><b>User Type</b></td>
-                        <td>
-                            <b><?php echo ucwords($uType); ?></b>
-                        </td>
-                    </tr>
+                    <?php
+                    $file = fopen('user.txt', 'r');
+                    $data = fread($file, filesize('user.txt'));
+
+                    $userData = explode("|",$data);
+                    $len = count($userData);
+                    
+                    for($i = 0; $i < $len-5;) {
+                        $name = trim($userData[$i]);
+                        $utype = trim($userData[$i+2]);
+                        $id = trim($userData[$i+3]);
+                        $email = trim($userData[$i+4]);
+                        $i+=5;
+                        echo "<tr>
+                                <td>{$id}</td>
+                                <td>{$name}</td>
+                                <td>{$email}</td>
+                                <td>{$utype}</td>
+                            </tr>";
+                    }
+                    fclose($file);
+                    ?>
                 </table>
             </td>
         </tr>

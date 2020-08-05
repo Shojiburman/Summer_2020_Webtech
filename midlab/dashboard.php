@@ -1,6 +1,7 @@
 <?php
     session_start();
     include 'session.php';
+    if($_SESSION['uType'] == "user"){
 ?>
 
 <!DOCTYPE html>
@@ -37,3 +38,10 @@
 </body>
 
 </html>
+
+<?php
+
+}else if($_SESSION['uType'] == 'admin'){
+    header('location:dashboardAdmin.php');
+}
+?>

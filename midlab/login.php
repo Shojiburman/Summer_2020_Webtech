@@ -107,13 +107,12 @@
                             <tr>
                                 <td>Password</td>
                                 <td>: </td>
-                                <td style="padding-bottom: 10px;"><input type="password" name="pass" value="<?php echo $pass;?>"></td>
+                                <td><input type="password" name="pass" value="<?php echo $pass;?>"></td>
                             </tr>
                             <tr>
-                                <td colspan="3" style="border-top: 1px solid black; padding-top: 10px;">
+                                <td colspan="3" style = "padding-top: 10px;">
                                     <input id="remember" type="checkbox" name="remember[]" value="yes" <?php if (isset($remember) && in_array('yes', $remember)) echo "checked"; ?>><label for="remember">Remember me</label> <br> <br>
                                     <input type="submit" name="submit" value="Submit">
-                                    <a href="forgotPassword.php">Forgot Password?</a>
                                 </td>
                             </tr>
                         </table>

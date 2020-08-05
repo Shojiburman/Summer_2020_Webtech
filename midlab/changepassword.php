@@ -94,9 +94,21 @@
                 <b>
                     <p style="border-bottom: 1px solid black; padding: 10px 0">Account</p>
                 </b>
-                <ul>
-                    <li><a href="dashboard.php">Dashboard</a></li>
+                <ul style="list-style-type: none;">
+                    <li>
+                        <?php if($_SESSION['uType'] == 'admin'){ ?>
+                            <a href="dashboardAdmin.php" >Dashboard</a>
+                        <?php ?>
+                        <?php } else if($_SESSION['uType'] == "user"){ ?>
+                            <a href="dashboard.php" >Dashboard</a>
+                        <?php } ?> 
+                    </li>
                     <li><a href="viewProfile.php">Veiw Profile</a></li>
+                    <?php if($_SESSION['uType'] == 'admin'){ ?>
+                        <li>
+                            <a href="viewUsers.php">View Users</a>
+                        </li>
+                    <?php } ?>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
             </td>
