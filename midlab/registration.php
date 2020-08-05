@@ -27,7 +27,17 @@
             $uname = strtolower(trim($_POST['uname']));
             if ($uname == '') {
                 $unameErr = 'User Name can not be empty';
+            } else { 
+            $file = fopen('user.txt', 'r');
+            $data = fread($file, filesize('user.txt'));
+            $userData = explode("|",$data);
+            foreach ($userData as $us) {
+                if(trim($us) == $uname){
+                    $unameErr = 'User Name is taken';
+                }
             }
+            fclose($file);
+        }
         } else {
             $unameErr = 'User Name is required';
         }

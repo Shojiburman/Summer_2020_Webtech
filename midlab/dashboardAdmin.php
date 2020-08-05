@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <table width="1000px" border="1" cellpadding="0" cellspacing="0" align="center">
         <tr height = "50px">
             <td colspan="2" align="right">
@@ -25,6 +24,7 @@
                 <ul style="list-style-type: none;">
                     <li><a href="viewProfile.php">Veiw Profile</a></li>
                     <li><a href="changePassword.php">Change Password</a></li>
+                    <li><a href="viewUsers.php">View Users</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
             </td>

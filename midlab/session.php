@@ -5,13 +5,7 @@
 	    } elseif (isset($_COOKIE['remember'])) {
 	        $current_user =  trim($_COOKIE['remember']);
 	    }
-	    if (!isset($_COOKIE['uname'])) {
-	    	session_destroy();
-	    	setcookie('remember', "");
-	        header("location:login.php");
-	        die();
-	    }
-	    if ($current_user == '' || $current_user != $_COOKIE['uname']) {
+	    if ($current_user == '') {
 			session_destroy();
 			setcookie('remember', "");
 	        header("location:login.php");

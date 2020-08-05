@@ -30,41 +30,46 @@
             $remember = $_POST['remember'];
         }
 
-        if (isset($uname) && isset($pass)) {
-            if (isset($_COOKIE['uname']) && isset($_COOKIE['pass'])) {
-                if (strtolower($uname) == $_COOKIE['uname'] && $pass == $_COOKIE['pass']) {
-                    if (isset($remember) && in_array('yes', $remember)) {
-                        setcookie('remember', $uname, time() + (10 * 365 * 24 * 60 * 60));
-                    } else {
-                        $_SESSION['login_user'] = $uname;
-                        setcookie('remember', "");
-                    }
-                    header('location: dashboard.php');
-                } else {
-                    $passErr = 'Wrong credentials';
-                }
-            } else {
-                $file = fopen('user.txt', 'r');
-                $data = fread($file, filesize('user.txt'));
-                $userData = explode("|",$data);
-                $i = 0;
-                foreach ($userData as $us) {
-                    if(trim($us) == $uname){
-                        if(trim($userData[$i+1]) == $pass){
+        if(isset($unameErr) || isset($passErr)){}
+            else { 
+            $file = fopen('user.txt', 'r');
+            $data = fread($file, filesize('user.txt'));
+            $userData = explode("|",$data);
+            $i = 0;
+            foreach ($userData as $us) {
+                if(trim($us) == $uname){
+                    if(trim($userData[$i+1]) == $pass){
+                        if(trim($userData[$i+2]) == "user"){
+                            $_SESSION['uType']  = "user";
                             $_SESSION['status']  = "Ok";
+                            $_SESSION['login_user'] = $uname;
                             if(isset($remember) && in_array('yes', $remember)){
                                 setcookie('remember', $uname, time() + (10 * 365 * 24 * 60 * 60));
+                            } else {
+                                setcookie('remember', "");
                             }
-                            header('location: home.php');
+                            header('location: dashboard.php');
+                        } else if(trim($userData[$i+2]) == 'admin'){
+                            $_SESSION['uType']  = "admin";
+                            $_SESSION['status']  = "Ok";
+                            $_SESSION['login_user'] = $uname;
+                            if(isset($remember) && in_array('yes', $remember)){
+                                setcookie('remember', $uname, time() + (10 * 365 * 24 * 60 * 60));
+                            } else {
+                                setcookie('remember', "");
+                            }
+                            header('location: dashboardAdmin.php');
+                        } else {
+                            header('location: registration.php');
                         }
-                    }else{
-                        $passErr = 'Invalid username/password     New user? Register first';
+                    } else {
+                        $passErr = 'Invalid password';
                     }
-                    $i++;
-                } 
-                fclose($file);
-            }            
-        }            
+                }
+                $i++;
+            } $passErr = 'Invalid user/password';
+            fclose($file);
+        }                    
     } 
 ?>
 <!DOCTYPE html>
