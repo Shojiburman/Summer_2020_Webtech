@@ -1,6 +1,13 @@
 <?php
     session_start(); 
-    $uname = $pass = "";
+    $conn = mysqli_connect('127.0.0.1', 'root', '', 'protibeshi');
+
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
+
+
+    $email = $pass = "";
     $remember = [];
     if(isset($_SESSION['login_user']) || isset($_COOKIE['remember'])){
         header("location:dashboard.php");
@@ -8,13 +15,13 @@
     }
 
     if (isset($_POST['submit'])) {
-        if (isset($_POST['uname'])) {
-            $uname = strtolower(trim($_POST['uname']));
-            if ($uname == '') {
-                $unameErr = 'User Name can not be empty';
+        if (isset($_POST['email'])) {
+            $email = strtolower(trim($_POST['email']));
+            if ($email == '') {
+                $emailErr = 'Email can not be empty';
             }
         } else {
-            $unameErr = 'User Name is required';
+            $emailErr = 'Email is required';
         }
 
         if (isset($_POST['pass'])) {
@@ -30,45 +37,24 @@
             $remember = $_POST['remember'];
         }
 
-        if(isset($unameErr) || isset($passErr)){}
+        if(isset($emailErr) || isset($passErr)){}
             else { 
-            $file = fopen('user.txt', 'r');
-            $data = fread($file, filesize('user.txt'));
-            $userData = explode("|",$data);
-            $i = 0;
-            foreach ($userData as $us) {
-                if(trim($us) == $uname){
-                    if(trim($userData[$i+1]) == $pass){
-                        if(trim($userData[$i+2]) == "user"){
-                            $_SESSION['uType']  = "user";
-                            $_SESSION['status']  = "Ok";
-                            $_SESSION['login_user'] = $uname;
-                            if(isset($remember) && in_array('yes', $remember)){
-                                setcookie('remember', $uname, time() + (10 * 365 * 24 * 60 * 60));
-                            } else {
-                                setcookie('remember', "");
-                            }
-                            header('location: dashboard.php');
-                        } else if(trim($userData[$i+2]) == 'admin'){
-                            $_SESSION['uType']  = "admin";
-                            $_SESSION['status']  = "Ok";
-                            $_SESSION['login_user'] = $uname;
-                            if(isset($remember) && in_array('yes', $remember)){
-                                setcookie('remember', $uname, time() + (10 * 365 * 24 * 60 * 60));
-                            } else {
-                                setcookie('remember', "");
-                            }
-                            header('location: dashboardAdmin.php');
+                $sql = "select * from users where email = '".$email."' AND pass = '".$pass."'";
+                if (($result = $conn->query($sql)) !== FALSE){
+                    while($row = $result->fetch_assoc()){
+                        $_SESSION['status']  = "Ok";
+                        $_SESSION['id'] = $row['u_id'];
+                        $_SESSION['name'] = $row['name'];
+                        if(isset($remember) && in_array('yes', $remember)){
+                            setcookie('remember', $email, time() + (10 * 365 * 24 * 60 * 60));
                         } else {
-                            header('location: registration.php');
+                            setcookie('remember', "");
                         }
-                    } else {
-                        $passErr = 'Invalid password';
-                    }
-                }
-                $i++;
-            } $passErr = 'Invalid user/password';
-            fclose($file);
+                        header('location: dashboard.php');
+                    } 
+                    $passErr = 'Invalid user/password';
+                } 
+            $conn->close();
         }                    
     } 
 ?>
@@ -100,9 +86,9 @@
                         <legend>Login</legend>
                         <table>
                             <tr>
-                                <td>Username</td>
+                                <td>Email</td>
                                 <td>: </td>
-                                <td><input type="text" name="uname" value="<?php echo $uname;?>"></td>
+                                <td><input type="text" name="email" value="<?php echo $email;?>"></td>
                             </tr>
                             <tr>
                                 <td>Password</td>
@@ -120,11 +106,14 @@
                 </form>
                 <br/>
                 <?php 
-                    if (isset($unameErr)) {
-                        echo "<strong><span>" . $unameErr . "</span></strong><br/>";
+                    if (isset($emailErr)) {
+                        echo "<strong><span>" . $emailErr . "</span></strong><br/>";
                     }
                     if (isset($passErr)) {
                         echo "<strong><span>" . $passErr . "</span></strong><br/>";
+                    }
+                    if (isset($Err)) {
+                        echo "<strong><span>" . $Err . "</span></strong><br/>";
                     }
                 ?>
                 <br/>
