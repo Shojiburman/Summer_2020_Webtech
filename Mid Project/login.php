@@ -63,46 +63,42 @@
 
 <head>
     <title>Login</title>
-    <style>
-        strong {
-            color: red;
-        }
-    </style>
 </head>
 
 <body>
-    <table width="1000px" border="1" cellpadding="0" cellspacing="0" align="center">
+    <table align="center" style="margin-bottom: 30px;">
         <tr height="50px">
             <td colspan="2" align="right">
-                <a href="publicHome.php">Home</a>
-                <a href="registration.php">Registration</a>
-                <a href="login.php">Login</a>
+                <a href="protibeshi.php" style="border: 2px solid black; border-radius: 7%; padding: 10px 15px; margin-right: 20px; text-decoration: none; color: black">Home</a>
+                <a href="about.php" style="border: 2px solid black; border-radius: 7%; padding: 10px 15px; margin-right: 20px; text-decoration: none; color: black">About</a>
+                <a href="registration.php" style="border: 2px solid black; border-radius: 7%; padding: 10px 15px; margin-right: 20px; text-decoration: none; color: black">Registration</a>
+                <a href="login.php" style="border: 2px solid black; border-radius: 7%; padding: 10px 15px; text-decoration: none; color: black">Login</a>
             </td>
         </tr>
+    </table> 
+    <table width="auto" border="1" cellpadding="0" cellspacing="0" align="center">
         <tr height="120px">
             <td colspan="2" align="center" style="padding: 40px 100px 40px 100px;">
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-                    <fieldset style="width: 200px;">
-                        <legend>Login</legend>
-                        <table>
-                            <tr>
-                                <td>Email</td>
-                                <td>: </td>
-                                <td><input type="text" name="email" value="<?php echo $email;?>"></td>
-                            </tr>
-                            <tr>
-                                <td>Password</td>
-                                <td>: </td>
-                                <td><input type="password" name="pass" value="<?php echo $pass;?>"></td>
-                            </tr>
-                            <tr>
-                                <td colspan="3" style = "padding-top: 10px;">
-                                    <input id="remember" type="checkbox" name="remember[]" value="yes" <?php if (isset($remember) && in_array('yes', $remember)) echo "checked"; ?>><label for="remember">Remember me</label> <br> <br>
-                                    <input type="submit" name="submit" value="Submit">
-                                </td>
-                            </tr>
-                        </table>
-                    </fieldset>
+                    <h1 style="color: #0aab8e">Sign in to Protibeshi</h1>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="text" name="email" value="<?php echo $email;?>" placeholder="Email" style="padding: 10px; width: 300px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="password" name="pass" value="<?php echo $pass;?>" placeholder="Password" style="padding: 10px; width: 300px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style = "padding-top: 10px;">
+                                <input id="remember" type="checkbox" name="remember[]" value="yes" <?php if (isset($remember) && in_array('yes', $remember)) echo "checked"; ?>><label for="remember">Remember me</label> <br> <br>
+                                <input type="submit" name="submit" value="Submit">
+                            </td>
+                        </tr>
+                    </table>
                 </form>
                 <br/>
                 <?php 
@@ -118,9 +114,6 @@
                 ?>
                 <br/>
             </td>
-        </tr>
-        <tr height="30px">
-            <td colspan="2" align="center">Copyright@ 2017</td>
         </tr>
     </table>
 </body>

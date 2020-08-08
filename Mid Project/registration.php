@@ -152,65 +152,64 @@
 
 <head>
     <title>Registration</title>
-    <style>
-        strong {
-            color: red;
-        }
-    </style>
 </head>
 
-<body>    
-    <table width="1000px" border="1" cellpadding="0" cellspacing="0" align="center">
+<body>
+    <table align="center" style="margin-bottom: 30px;">
         <tr height="50px">
             <td colspan="2" align="right">
-                <a href="publicHome.php">Home</a>
-                <a href="registration.php">Registration</a>
-                <a href="login.php">Login</a>
+                <a href="protibeshi.php" style="border: 2px solid black; border-radius: 7%; padding: 10px 15px; margin-right: 20px; text-decoration: none; color: black">Home</a>
+                <a href="about.php" style="border: 2px solid black; border-radius: 7%; padding: 10px 15px; margin-right: 20px; text-decoration: none; color: black">About</a>
+                <a href="registration.php" style="border: 2px solid black; border-radius: 7%; padding: 10px 15px; margin-right: 20px; text-decoration: none; color: black">Registration</a>
+                <a href="login.php" style="border: 2px solid black; border-radius: 7%; padding: 10px 15px; text-decoration: none; color: black">Login</a>
             </td>
         </tr>
+    </table>   
+    <table width="auto" border="1" cellpadding="0" cellspacing="0" align="center">
         <tr height="auto">
             <td colspan="2" style="padding: 40px 100px 40px 100px;">
-                <h1>Create Account</h1></b>
+                <h1 align="center" style="color: #0aab8e">Create Account</h1>
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                    <br />
                     <table width="100%" cellpadding="2" cellspacing="0">
                     	<tr>
-                            <td>Name</td>
-                            <td><input type="text" name="name" value="<?php echo $name;?>"></td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
                             <td>
-                                <input type="text" name="email" value="<?php echo $email;?>">
+                                <input type="text" name="name" value="<?php echo $name;?>" placeholder="Name" style="padding: 10px; width: 300px">
+                                <?php
+                                    if (isset($passErr)) {
+                                        echo "<br/><span style='color: red; font-size: 14px'>* " . $nameErr . "</span>";
+                                    }
+                                ?>
                             </td>
                         </tr>
                         <tr>
-                            <td>Password</td>
-                            <td><input name="pass" type="password"></td>
+                            <td>
+                                <input type="text" name="email" value="<?php echo $email;?>" placeholder="Email" style="padding: 10px; width: 300px">
+                                <?php
+                                    if (isset($passErr)) {
+                                        echo "<br/><span style='color: red; font-size: 14px'>* " . $emailErr . "</span>";
+                                    }
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input name="pass" type="password" placeholder="Password" style="padding: 10px; width: 300px;">
+                                <?php
+                                    if (isset($passErr)) {
+                                        echo "<br/><span style='color: red; font-size: 14px'>* " . $passErr . "</span>";
+                                    }
+                                ?>
+                            </td>
                         </tr>
                     </table>
-                    <br />
                     <?php 
-                        if (isset($emailErr)) {
-                            echo "<strong><span>" . $emailErr . "</span></strong><br/>";
-                        }
-                        if (isset($nameErr)) {
-                            echo "<strong><span>" . $nameErr . "</span></strong><br/>";
-                        }
-                        if (isset($passErr)) {
-                            echo "<strong><span>" . $passErr . "</span></strong><br/>";
-                        }
                         if (isset($error)) {
-                            echo "<strong><span>" . $error . "</span></strong><br/>";
+                            echo "<strong><span>* " . $error . "</span></strong><br/>";
                         }
                     ?>
-                    <br/>
-                    <input name="submit" type="submit" value="Submit">
+                    <input name="submit" type="submit" value="Sign up" style="margin: 20px auto; display: block; padding: 10px 30px; border-radius: 5px; background-color: white;">
                 </form>
             </td>
-        </tr>
-        <tr height="30px">
-            <td colspan="2" align="center">Copyright@ 2017</td>
         </tr>
     </table>
 </body>
