@@ -45,6 +45,7 @@
                         $_SESSION['status']  = "Ok";
                         $_SESSION['id'] = $row['u_id'];
                         $_SESSION['name'] = $row['name'];
+                        $_SESSION['email'] = $row['email'];
                         if(isset($remember) && in_array('yes', $remember)){
                             setcookie('remember', $email, time() + (10 * 365 * 24 * 60 * 60));
                         } else {

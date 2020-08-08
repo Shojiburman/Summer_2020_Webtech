@@ -1,22 +1,7 @@
 <?php
     session_start();
     include 'session.php';
-    $name = $_SESSION['login_user'];
-
-    $file = fopen('user.txt', 'r');
-    $data = fread($file, filesize('user.txt'));
-    $userData = explode("|",$data);
-    $i = 0;
-    foreach ($userData as $us) {
-        if(trim($us) == $name){
-            $uType = trim($userData[$i+2]);
-            $id = trim($userData[$i+3]);
-            $email = trim($userData[$i+4]);
-            break;
-        }
-        $i++;
-    }
-    fclose($file);
+    $name = $_SESSION['name'];
 ?>
 <!DOCTYPE html>
 <html>
