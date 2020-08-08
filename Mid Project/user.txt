@@ -1,3 +1,0 @@
-shojib|123|user|01|sh@gm.com|
-anis|1234|admin|02|an@g.com|
-shoab|123456|user|03|s@g.co|shajid|abcd|admin|04|shajid@gmail.com|
