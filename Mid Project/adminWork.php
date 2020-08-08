@@ -1,7 +1,6 @@
 <?php
     session_start();
     include 'session.php';
-    $name = $_SESSION['name'];
 ?>
 <!DOCTYPE html>
 <html>

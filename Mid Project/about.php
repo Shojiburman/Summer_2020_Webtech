@@ -9,7 +9,7 @@
 </head>
 <body>
 	<?php
-		if(isset($_SESSION['name']) || isset($_COOKIE['remember'])){
+		if(isset($_SESSION['id']) || isset($_COOKIE['remember'])){
 			include 'adminNav.html';
 		} else {
 			include 'nav.html';

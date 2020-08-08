@@ -1,11 +1,5 @@
 <?php
     session_start(); 
-    $conn = mysqli_connect('127.0.0.1', 'root', '', 'protibeshi');
-
-    if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-    }
-
 
     $email = $pass = "";
     $remember = [];
@@ -39,17 +33,16 @@
 
         if(isset($emailErr) || isset($passErr)){}
             else { 
+                $conn = mysqli_connect('127.0.0.1', 'root', '', 'protibeshi');
+
+                if ($conn->connect_error) {
+                  die("Connection failed: " . $conn->connect_error);
+                }
                 $sql = "select * from users where email = '".$email."' AND pass = '".$pass."'";
                 if (($result = $conn->query($sql)) !== FALSE){
                     while($row = $result->fetch_assoc()){
                         $_SESSION['status']  = "Ok";
                         $_SESSION['id'] = $row['u_id'];
-                        $_SESSION['name'] = $row['name'];
-                        $_SESSION['email'] = $row['email'];
-                        $_SESSION['work'] = $row['work'];
-                        $_SESSION['pnumber'] = $row['pnumber'];
-                        $_SESSION['address'] = $row['address'];
-                        $_SESSION['bio'] = $row['bio'];
                         if(isset($remember) && in_array('yes', $remember)){
                             setcookie('remember', $email, time() + (10 * 365 * 24 * 60 * 60));
                         } else {

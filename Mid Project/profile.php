@@ -3,7 +3,6 @@
     $conn = mysqli_connect('127.0.0.1', 'root', '', 'protibeshi');
 
     include 'session.php';
-    $name = $_SESSION['name'];
 
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
@@ -170,15 +169,15 @@
                     <tr>
                         <td>
                             <img src="profile.png" width="200px" style="border-radius: 50%">
-                            <form>
+                            <a href="changeProfilePic.php">
                                 <img src="edit.svg" width="15px" style="display: block; margin: 7px auto; border: 1px solid #0aab8e; border-radius: 5px; padding: 7px">
-                            </form>
+                            </a>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <p align="center" style="font-family: ROBOTO; border-bottom: 1px solid #0aab8e;  border-top: 1px solid #0aab8e; padding-bottom: 10px; padding-top: 10px"><?php echo strtoupper($_SESSION['name']); ?></p>
-                            <p align="center" style="font-family: ROBOTO; border-bottom: 1px solid #0aab8e; padding-bottom: 10px"><?php echo ($_SESSION['email']); ?></p>
+                            <p align="center" style="font-family: ROBOTO; border-bottom: 1px solid #0aab8e;  border-top: 1px solid #0aab8e; padding-bottom: 10px; padding-top: 10px"><?php echo strtoupper($c_name); ?></p>
+                            <p align="center" style="font-family: ROBOTO; border-bottom: 1px solid #0aab8e; padding-bottom: 10px"><?php echo ($c_email); ?></p>
                         </td>
                     </tr>
                     <tr>
@@ -198,11 +197,11 @@
                     <tr>
                         <td align="center">
                             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post">
-                                <input type="text" name="name" value="<?php echo $_SESSION['name'] ?>" placeholder="Name" style="padding: 10px; width: 300px">
-                                <input type="text" name="email" value="<?php echo $_SESSION['email'] ?>" placeholder="Email" style="padding: 10px; width: 300px">
-                                <input type="text" name="work" value="<?php echo $_SESSION['work'] ?>" placeholder="Work" style="padding: 10px; width: 300px">
-                                <input type="text" name="pnumber" value="<?php echo $_SESSION['pnumber'] ?>" placeholder="Contact Number" style="padding: 10px; width: 300px">
-                                <input type="text" name="address" value="<?php echo $_SESSION['address'] ?>" placeholder="Address" style="padding: 10px; width: 300px">
+                                <input type="text" name="name" value="<?php echo $c_name ?>" placeholder="Name" style="padding: 10px; width: 300px">
+                                <input type="text" name="email" value="<?php echo $c_email ?>" placeholder="Email" style="padding: 10px; width: 300px">
+                                <input type="text" name="work" value="<?php echo $c_work ?>" placeholder="Work" style="padding: 10px; width: 300px">
+                                <input type="text" name="pnumber" value="<?php echo $c_pnumber ?>" placeholder="Contact Number" style="padding: 10px; width: 300px">
+                                <input type="text" name="address" value="<?php echo $c_address ?>" placeholder="Address" style="padding: 10px; width: 300px">
                                 <input type="text" name="dob" value="" placeholder="Birthdate" style="padding: 10px; width: 300px">
                                 <textarea type="text" name="bio" value="" placeholder="Bio" style="padding: 10px; width: 300px"></textarea>
                                 <input type="submit" name="submit" value="SAVE" style="color: #0aab8e; margin: 20px auto; display: block; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white; cursor: pointer;">

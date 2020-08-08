@@ -3,7 +3,6 @@
     $conn = mysqli_connect('127.0.0.1', 'root', '', 'protibeshi');
 
     include 'session.php';
-    $email = $_SESSION['email'];
 
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
@@ -60,54 +59,6 @@
         $conn->close();
     }
 
-
-    function validateName($string) {
-        $array = str_split($string);
-        foreach ($array as $value) {
-            if ($value == '.' || $value == '-' || $value == ' ' || ctype_alpha($value)) {
-                continue;
-            } else {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    function validateDomainName($string) {
-        foreach (explode(".", $string) as $part) {
-            if ($part == '') {
-                return false;
-            }
-        }
-        $array = str_split($string);
-        foreach ($array as $value) {
-            if ($value == '-' || $value == '.' || is_numeric($value) || ctype_alpha($value)) {
-                continue;
-            } else {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    function validateDomainExt($string) {
-        if (is_numeric($string[0])) {
-            return false;
-        }
-        $array = str_split($string);
-        foreach ($array as $value) {
-            if (is_numeric($value) || ctype_alpha($value)) {
-                continue;
-            } else {
-                return false;
-            }
-        }
-        return true;
-    }
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -134,15 +85,15 @@
                     <tr>
                         <td>
                             <img src="profile.png" width="200px" style="border-radius: 50%">
-                            <form>
+                            <a href="changeProfilePic.php">
                                 <img src="edit.svg" width="15px" style="display: block; margin: 7px auto; border: 1px solid #0aab8e; border-radius: 5px; padding: 7px">
-                            </form>
+                            </a>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <p align="center" style="font-family: ROBOTO; border-bottom: 1px solid #0aab8e;  border-top: 1px solid #0aab8e; padding-bottom: 10px; padding-top: 10px"><?php echo strtoupper($_SESSION['name']); ?></p>
-                            <p align="center" style="font-family: ROBOTO; border-bottom: 1px solid #0aab8e; padding-bottom: 10px"><?php echo ($_SESSION['email']); ?></p>
+                            <p align="center" style="font-family: ROBOTO; border-bottom: 1px solid #0aab8e;  border-top: 1px solid #0aab8e; padding-bottom: 10px; padding-top: 10px"><?php echo strtoupper($c_name); ?></p>
+                            <p align="center" style="font-family: ROBOTO; border-bottom: 1px solid #0aab8e; padding-bottom: 10px"><?php echo ($c_email); ?></p>
                         </td>
                     </tr>
                     <tr>
