@@ -46,6 +46,10 @@
                         $_SESSION['id'] = $row['u_id'];
                         $_SESSION['name'] = $row['name'];
                         $_SESSION['email'] = $row['email'];
+                        $_SESSION['work'] = $row['work'];
+                        $_SESSION['pnumber'] = $row['pnumber'];
+                        $_SESSION['address'] = $row['address'];
+                        $_SESSION['bio'] = $row['bio'];
                         if(isset($remember) && in_array('yes', $remember)){
                             setcookie('remember', $email, time() + (10 * 365 * 24 * 60 * 60));
                         } else {
@@ -81,7 +85,7 @@
                             <td>
                                 <input type="text" name="email" value="<?php echo $email;?>" placeholder="Email" style="padding: 10px; width: 300px">
                                 <?php
-                                    if (isset($passErr)) {
+                                    if (isset($emailErr)) {
                                         echo "<br/><span style='color: red; font-size: 14px'>* " . $emailErr . "</span>";
                                     }
                                 ?>

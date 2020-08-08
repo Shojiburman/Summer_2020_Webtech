@@ -19,7 +19,7 @@
                 $nameErr = 'Name can not be empty';
             }
         } else {
-            $nameErr = 'User Name is required';
+            $nameErr = 'Name is required';
         }
 
         if (isset($_POST['pass'])) {
