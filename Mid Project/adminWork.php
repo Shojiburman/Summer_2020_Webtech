@@ -15,13 +15,9 @@
         }
         ul li {
             display: block;
-            width: 50%;
-            border-top: 1px solid #0aab8e;
+            width: 70%;
             padding: 10px;
             margin: 0px auto;
-        }
-        ul li:last-child {
-            border-bottom: 1px solid #0aab8e;
         }
         ul li a {
             display: block;
@@ -45,31 +41,31 @@
 
     <table align="center">
         <tr>
-            <td width="350px" height="600px" style="background-color: #f3f5f7">
+            <td width="340px" height="600px" style="background-color: #f3f5f7">
                 <ul>
                     <li>
-                        <a href="">SEVICES</a>
+                        <a href="" style="text-decoration: none; color: #0aab8e; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white;">SEVICES</a>
                     </li>
                     <li>
-                        <a href="">ADD USERS</a>
+                        <a href="" style="text-decoration: none; color: #0aab8e; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white;">ADD USERS</a>
                     </li>
                     <li>
-                        <a href="">USERS LIST</a>
+                        <a href="" style="text-decoration: none; color: #0aab8e; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white;">USERS LIST</a>
                     </li>
                     <li>
-                        <a href="">ORDER LIST</a>
+                        <a href="" style="text-decoration: none; color: #0aab8e; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white;">ORDER LIST</a>
                     </li>
                     <li>
-                        <a href="">COUPON</a>
+                        <a href="" style="text-decoration: none; color: #0aab8e; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white;">COUPON</a>
                     </li>
                     <li>
-                        <a href="">COMMENTS & RATING</a>
+                        <a href="" style="text-decoration: none; color: #0aab8e; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white;">COMMENTS & RATING</a>
                     </li>
                     <li>
-                        <a href="">REPORTS</a>
+                        <a href="" style="text-decoration: none; color: #0aab8e; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white;">REPORTS</a>
                     </li>
                     <li>
-                        <a href="">FAQs</a>
+                        <a href="" style="text-decoration: none; color: #0aab8e; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white;">FAQs</a>
                     </li>
                 </ul>
             </td>

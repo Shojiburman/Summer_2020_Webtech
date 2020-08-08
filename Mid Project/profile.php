@@ -29,7 +29,7 @@
                         <td>
                             <img src="profile.png" width="200px" style="border-radius: 50%">
                             <form>
-                                <img src="edit.svg" width="20px" style="display: block; margin: 5px auto; border: 1px solid #0aab8e; border-radius: 5px; padding: 5px">
+                                <img src="edit.svg" width="15px" style="display: block; margin: 7px auto; border: 1px solid #0aab8e; border-radius: 5px; padding: 7px">
                             </form>
                         </td>
                     </tr>
@@ -50,7 +50,7 @@
                 <table>
                     <tr>
                         <td align="center">
-                            <h3 style="font-family: Roboto; margin: 20px 10px 10px 10px;">EDIT PROFILE</h3>
+                            <h3 style="font-family: Roboto; margin: 20px 10px 10px 10px; color: #0aab8e">EDIT PROFILE</h3>
                         </td>
                     </tr>
                     <tr>
@@ -63,7 +63,7 @@
                                 <input type="text" name="email" value="" placeholder="Address" style="padding: 10px; width: 300px">
                                 <input type="text" name="email" value="" placeholder="Birthdate" style="padding: 10px; width: 300px">
                                 <textarea type="text" name="email" value="" placeholder="Bio" style="padding: 10px; width: 300px"></textarea>
-                                <input type="submit" name="submit" value="SAVE" style="margin: 20px auto; display: block; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white; cursor: pointer;">
+                                <input type="submit" name="submit" value="SAVE" style="color: #0aab8e; margin: 20px auto; display: block; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white; cursor: pointer;">
                             </form>
                         </td>
                     </tr>
