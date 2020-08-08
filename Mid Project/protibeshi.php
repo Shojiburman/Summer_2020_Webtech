@@ -4,15 +4,16 @@
 	<title>Protibeshi</title>
 </head>
 <body>
-	<table align="center" style="margin-bottom: 30px;">
-		<tr height="50px">
-	        <td colspan="2" align="right">
-	            <a href="protibeshi.php" style="border: 2px solid black; border-radius: 7%; padding: 10px 15px; margin-right: 20px; text-decoration: none; color: black">Home</a>
-	            <a href="about.php" style="border: 2px solid black; border-radius: 7%; padding: 10px 15px; margin-right: 20px; text-decoration: none; color: black">About</a>
-	            <a href="registration.php" style="border: 2px solid black; border-radius: 7%; padding: 10px 15px; margin-right: 20px; text-decoration: none; color: black">Registration</a>
-	            <a href="login.php" style="border: 2px solid black; border-radius: 7%; padding: 10px 15px; text-decoration: none; color: black">Login</a>
-	        </td>
-    	</tr>
-	</table>
+	<?php
+    include 'nav.html';
+    ?>
+    <div style="display: block; width: 1px; margin: 0 auto">
+    	<p style="display: inline-block; border: .5px solid #0aab8e; height: 100px"></p>
+    </div>
+    <h1 style="text-align: center; ">Welcome at PROTIBESHI</h1>
+    <a href="registration.php" style="text-align: center; color: #0aab8e; font-family: Roboto; text-decoration: none; display: block; margin-bottom: 30px">JOIN US</a>
+    <div style="display: block; width: 1px; margin: 0 auto">
+    	<p style="display: inline-block; border: .5px solid #0aab8e; height: 100px"></p>
+    </div>
 </body>
 </html>
