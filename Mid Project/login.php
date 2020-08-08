@@ -85,34 +85,36 @@
                         <tr>
                             <td>
                                 <input type="text" name="email" value="<?php echo $email;?>" placeholder="Email" style="padding: 10px; width: 300px">
+                                <?php
+                                    if (isset($passErr)) {
+                                        echo "<br/><span style='color: red; font-size: 14px'>* " . $emailErr . "</span>";
+                                    }
+                                ?>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <input type="password" name="pass" value="<?php echo $pass;?>" placeholder="Password" style="padding: 10px; width: 300px">
+                                <?php
+                                    if (isset($passErr)) {
+                                        echo "<br/><span style='color: red; font-size: 14px'>* " . $passErr . "</span>";
+                                    }
+                                ?>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3" style = "padding-top: 10px;">
-                                <input id="remember" type="checkbox" name="remember[]" value="yes" <?php if (isset($remember) && in_array('yes', $remember)) echo "checked"; ?>><label for="remember">Remember me</label> <br> <br>
-                                <input type="submit" name="submit" value="Submit">
+                                <input id="remember" type="checkbox" name="remember[]" value="yes" <?php if (isset($remember) && in_array('yes', $remember)) echo "checked"; ?>><label for="remember">Remember me</label>
+                                <input type="submit" name="submit" value="SIGN IN" style="margin: 20px auto; display: block; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white;">
                             </td>
                         </tr>
                     </table>
                 </form>
-                <br/>
                 <?php 
-                    if (isset($emailErr)) {
-                        echo "<strong><span>" . $emailErr . "</span></strong><br/>";
-                    }
-                    if (isset($passErr)) {
-                        echo "<strong><span>" . $passErr . "</span></strong><br/>";
-                    }
                     if (isset($Err)) {
                         echo "<strong><span>" . $Err . "</span></strong><br/>";
                     }
                 ?>
-                <br/>
             </td>
         </tr>
     </table>

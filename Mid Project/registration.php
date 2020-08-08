@@ -207,7 +207,7 @@
                             echo "<strong><span>* " . $error . "</span></strong><br/>";
                         }
                     ?>
-                    <input name="submit" type="submit" value="Sign up" style="margin: 20px auto; display: block; padding: 10px 30px; border-radius: 5px; background-color: white;">
+                    <input name="submit" type="submit" value="SIGN UP" style="margin: 20px auto; display: block; padding: 10px 30px; border-radius: 5px; background-color: white; border: 1.5px solid #0aab8e;">
                 </form>
             </td>
         </tr>
