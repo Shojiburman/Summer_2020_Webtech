@@ -15,9 +15,9 @@
         include 'adminNav.html';
     ?>
 
-    <table width="992" border="1" cellpadding="0" cellspacing="0" align="center">
+    <table width="992" border="0" cellpadding="0" cellspacing="0" align="center" width="200px" height="300px" style="background-color: #f3f5f7">
         <tr height = "120px">
-        	<td style="padding-left: 10px;">Welcome <b><?php echo ucwords($_SESSION['name']); ?></b></td>
+        	<td style="padding-left: 10px; text-align: center;"><h1>Welcome <b style="color: #0aab8e"><?php echo strtoupper($_SESSION['name']); ?></b></h1></td>
         </tr>
     </table>
 </body>
