@@ -11,6 +11,9 @@
 </head>
 
 <body>
+    <?php
+    include 'adminNav.html';
+?>
 
     <table width="1000px" border="1" cellpadding="0" cellspacing="0" align="center">
         <tr height = "50px">
@@ -29,9 +32,6 @@
                 </ul>
             </td>
         	<td style="padding-left: 10px">Welcome <b><?php echo ucwords($_SESSION['name']); ?></b></td>
-        </tr>
-        <tr height = "30px">
-        	<td colspan="2" align="center">Copyright@ 2017</td>
         </tr>
     </table>
 </body>

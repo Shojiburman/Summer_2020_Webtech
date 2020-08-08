@@ -9,7 +9,7 @@
 
     $email = $pass = "";
     $remember = [];
-    if(isset($_SESSION['login_user']) || isset($_COOKIE['remember'])){
+    if(isset($_SESSION['name']) || isset($_COOKIE['remember'])){
         header("location:dashboard.php");
         die();
     }
@@ -99,7 +99,7 @@
                         <tr>
                             <td colspan="3" style = "padding-top: 10px;">
                                 <input id="remember" type="checkbox" name="remember[]" value="yes" <?php if (isset($remember) && in_array('yes', $remember)) echo "checked"; ?>><label for="remember">Remember me</label>
-                                <input type="submit" name="submit" value="SIGN IN" style="margin: 20px auto; display: block; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white;">
+                                <input type="submit" name="submit" value="SIGN IN" style="margin: 20px auto; display: block; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white; cursor: pointer;">
                             </td>
                         </tr>
                     </table>
