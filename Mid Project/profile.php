@@ -244,7 +244,9 @@
                 <table align="center">
                     <tr>
                         <td>
-                            <img src='<?php echo $c_pic; ?>' width="200px" style="border-radius: 50%">
+                            <div style="width: 200px; height: 200px;">
+                                <img src="<?php echo $c_pic; ?>" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                            </div>
                             <a href="changeProfilePic.php">
                                 <img src="edit.svg" width="15px" style="display: block; margin: 7px auto; border: 1px solid #0aab8e; border-radius: 5px; padding: 7px">
                             </a>
