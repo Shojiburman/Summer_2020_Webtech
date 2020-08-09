@@ -74,7 +74,7 @@
                 </ul>
             </td>
             <td width="800px" height="600px" style="background-color: #f3f5f7">
-                <h3 style="font-family: Roboto; margin: 20px 10px 50px 10px; color: #0aab8e" align="center">USERS LIST</h3>
+                <h3 style="font-family: Roboto; margin: 20px 10px 50px 10px; color: #0aab8e" align="center">ORDER LIST</h3>
                 <table border="0" align="center" cellspacing="0" cellpadding="0">
                     <tr>
                         <td align="center">ORDER ID</td>
