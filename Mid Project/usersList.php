@@ -32,6 +32,8 @@
         }
         table tr td:last-child table tr td {
             text-align: center;
+            background-color: white;
+            padding: 10px;
         }
     </style>
 </head>
@@ -72,7 +74,8 @@
                 </ul>
             </td>
             <td width="800px" height="600px" style="background-color: #f3f5f7">
-                <table border="0" align="center" cellspacing="10" cellpadding="5">
+                <h3 style="font-family: Roboto; margin: 20px 10px 50px 10px; color: #0aab8e" align="center">USERS LIST</h3>
+                <table border="0" align="center" cellspacing="0" cellpadding="0">
                     <tr>
                         <td align="center">ID</td>
                         <td align="center">NAME</td>
