@@ -158,34 +158,6 @@
                 $conn->close();
             }
         }
-
-
-    /*if (($result = $conn->query($sql)) !== FALSE)
-    {
-        while($row = $result->fetch_assoc())
-        {
-            $emailErr = "Email is taken";
-        }
-    }
-
-        if (isset($emailErr)) {} else {
-            $sql = "UPDATE users SET name = '$name', 
-            email = '$email', 
-            work = '$work', 
-            pnumber = '$pnumber', 
-            address = '$address', 
-            bio = '$bio'
-            WHERE email = '".$_SESSION['email']."'";
-
-            if ($conn->query($sql) === TRUE) {
-              $error = "Record updated successfully";
-              header('location: profile.php');
-            } else {
-              $error = "Error: " . $sql . "<br>" . $conn->error;
-            }
-
-            $conn->close();
-        }*/
     }
 
 

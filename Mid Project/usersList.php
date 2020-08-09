@@ -30,6 +30,9 @@
             width: 150px;
             height: auto;
         }
+        table tr td:last-child table tr td {
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -68,24 +71,42 @@
                     </li>
                 </ul>
             </td>
-            <td width="600px" height="600px" style="background-color: #f3f5f7">
-                <table align="center" cellspacing="100">
+            <td width="800px" height="600px" style="background-color: #f3f5f7">
+                <table border="0" align="center" cellspacing="10" cellpadding="5">
                     <tr>
-                        <td>
-                            <img src="electrician.svg">
-                        </td>
-                        <td>
-                            <img src="electrician.svg">
-                        </td>
+                        <td align="center">ID</td>
+                        <td align="center">NAME</td>
+                        <td align="center">EMAIL</td>
+                        <td align="center">CONTUCT NUMBER</td>
+                        <td align="center">ADDRESS</td>
+                        <td align="center">USER TYPE</td>
                     </tr>
-                    <tr>
-                        <td>
-                            <img src="electrician.svg">
-                        </td>
-                        <td>
-                            <img src="electrician.svg">
-                        </td>
-                    </tr>
+                    <?php 
+                        $conn = mysqli_connect('127.0.0.1', 'root', '', 'protibeshi');
+                        if ($conn->connect_error) {
+                          die("Connection failed: " . $conn->connect_error);
+                        }
+                        $sql = "select * from users";
+                        if (($result = $conn->query($sql)) !== FALSE){
+                            while($row = $result->fetch_assoc()){
+                                $id = $row['u_id'];
+                                $name =  $row['name'];
+                                $email = $row['email'];
+                                $pnumber = $row['pnumber'];
+                                $address = $row['address'];
+                                $utype = $row['admin'];
+                                echo "<tr>
+                                        <td>{$id}</td>
+                                        <td>{$name}</td>
+                                        <td>{$email}</td>
+                                        <td>{$pnumber}</td>
+                                        <td>{$address}</td>
+                                        <td>{$utype}</td>
+                                    </tr>";
+                            }
+                        }
+                        $conn->close();
+                    ?>
                 </table>                
             </td>
         </tr>
