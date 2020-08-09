@@ -1,12 +1,6 @@
 <?php
     session_start();
-    $conn = mysqli_connect('127.0.0.1', 'root', '', 'protibeshi');
-
     include 'session.php';
-
-    if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-    }
 
     $name = $email = $work = $pnumber = $address = $dob = $bio = "";
     if (isset($_POST['submit'])) {
@@ -15,6 +9,7 @@
         $work = strtolower(trim($_POST['work']));
         $pnumber = strtolower(trim($_POST['pnumber']));
         $address = strtolower(trim($_POST['address']));
+        $dob = strtolower(trim($_POST['dob']));
         $bio = strtolower(trim($_POST['bio']));
 
         if (isset($_POST['email'])) {
@@ -55,8 +50,117 @@
                 }
             }
         }
-    $sql = "select email from users where email = '".$email."'";
-    if (($result = $conn->query($sql)) !== FALSE)
+    
+        if (!$work == '') {
+            if($work != $c_work){
+                $conn = mysqli_connect('127.0.0.1', 'root', '', 'protibeshi');
+                if ($conn->connect_error) {
+                  die("Connection failed: " . $conn->connect_error);
+                }
+                $sql = "UPDATE users SET work = '$work' WHERE u_id = '".$_SESSION['id']."'";
+
+                if ($conn->query($sql) === TRUE) {
+                  $error = "Record updated successfully";
+                  header('location: profile.php');
+                } else {
+                  $error = "Error: " . $sql . "<br>" . $conn->error;
+                }
+                $conn->close();
+            }
+        }
+
+        if (!$address == '') {
+            if($address != $c_address){
+                $conn = mysqli_connect('127.0.0.1', 'root', '', 'protibeshi');
+                if ($conn->connect_error) {
+                  die("Connection failed: " . $conn->connect_error);
+                }
+                $sql = "UPDATE users SET address = '$address' WHERE u_id = '".$_SESSION['id']."'";
+
+                if ($conn->query($sql) === TRUE) {
+                  $error = "Record updated successfully";
+                  header('location: profile.php');
+                } else {
+                  $error = "Error: " . $sql . "<br>" . $conn->error;
+                }
+                $conn->close();
+            }
+        }
+
+        if (!$bio == '') {
+            if($bio != $c_bio){
+                $conn = mysqli_connect('127.0.0.1', 'root', '', 'protibeshi');
+                if ($conn->connect_error) {
+                  die("Connection failed: " . $conn->connect_error);
+                }
+                $sql = "UPDATE users SET bio = '$bio' WHERE u_id = '".$_SESSION['id']."'";
+
+                if ($conn->query($sql) === TRUE) {
+                  $error = "Record updated successfully";
+                  header('location: profile.php');
+                } else {
+                  $error = "Error: " . $sql . "<br>" . $conn->error;
+                }
+                $conn->close();
+            }
+        }
+
+        if ($pnumber != '') {
+            if($pnumber != $c_pnumber){
+                $conn = mysqli_connect('127.0.0.1', 'root', '', 'protibeshi');
+                if ($conn->connect_error) {
+                  die("Connection failed: " . $conn->connect_error);
+                }
+                $sql = "UPDATE users SET pnumber = '$pnumber' WHERE u_id = '".$_SESSION['id']."'";
+
+                if ($conn->query($sql) === TRUE) {
+                  $error = "Record updated successfully";
+                  header('location: profile.php');
+                } else {
+                  $error = "Error: " . $sql . "<br>" . $conn->error;
+                }
+                $conn->close();
+            }
+        }
+
+        if ($dob != '') {
+            if($dob != $c_dob){
+                $conn = mysqli_connect('127.0.0.1', 'root', '', 'protibeshi');
+                if ($conn->connect_error) {
+                  die("Connection failed: " . $conn->connect_error);
+                }
+                $sql = "UPDATE users SET dob = '$dob' WHERE u_id = '".$_SESSION['id']."'";
+
+                if ($conn->query($sql) === TRUE) {
+                  $error = "Record updated successfully";
+                  header('location: profile.php');
+                } else {
+                  $error = "Error: " . $sql . "<br>" . $conn->error;
+                }
+                $conn->close();
+            }
+        }
+
+        if ($name != '') {
+            if($name != $c_name){
+                $conn = mysqli_connect('127.0.0.1', 'root', '', 'protibeshi');
+                if ($conn->connect_error) {
+                  die("Connection failed: " . $conn->connect_error);
+                }
+                $sql = "UPDATE users SET name = '$name' WHERE u_id = '".$_SESSION['id']."'";
+
+                if ($conn->query($sql) === TRUE) {
+                  $error = "Record updated successfully";
+                  header('location: profile.php');
+                } else {
+                  $error = "Error: " . $sql . "<br>" . $conn->error;
+                }
+                $conn->close();
+            }
+        }
+
+
+    /*if (($result = $conn->query($sql)) !== FALSE)
     {
         while($row = $result->fetch_assoc())
         {
@@ -64,7 +168,7 @@
         }
     }
 
-        /*if (isset($emailErr)) {} else {
+        if (isset($emailErr)) {} else {
             $sql = "UPDATE users SET name = '$name', 
             email = '$email', 
             work = '$work', 
@@ -202,8 +306,8 @@
                                 <input type="text" name="work" value="<?php echo $c_work ?>" placeholder="Work" style="padding: 10px; width: 300px">
                                 <input type="text" name="pnumber" value="<?php echo $c_pnumber ?>" placeholder="Contact Number" style="padding: 10px; width: 300px">
                                 <input type="text" name="address" value="<?php echo $c_address ?>" placeholder="Address" style="padding: 10px; width: 300px">
-                                <input type="text" name="dob" value="" placeholder="Birthdate" style="padding: 10px; width: 300px">
-                                <textarea type="text" name="bio" value="" placeholder="Bio" style="padding: 10px; width: 300px"></textarea>
+                                <input type="date" name="dob" value="<?php echo $c_dob ?>" placeholder="Birthdate" style="padding: 10px; width: 300px">
+                                <textarea type="text" name="bio" value="" placeholder="Bio" style="padding: 10px; width: 300px"><?php echo $c_bio ?></textarea>
                                 <input type="submit" name="submit" value="SAVE" style="color: #0aab8e; margin: 20px auto; display: block; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white; cursor: pointer;">
                                 <?php
                                     if (isset($error)) {

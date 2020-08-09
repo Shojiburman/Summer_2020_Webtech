@@ -15,6 +15,7 @@
 			        $c_work = $row['work'];
 			        $c_pnumber = $row['pnumber'];
 			        $c_address = $row['address'];
+			        $c_dob = $row['dob'];
 			        $c_bio = $row['bio'];
 			        $c_pic = "picture/".$row['picture'];
 			    }
