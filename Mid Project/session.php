@@ -16,7 +16,7 @@
 			        $c_pnumber = $row['pnumber'];
 			        $c_address = $row['address'];
 			        $c_bio = $row['bio'];
-			        $c_pic = $row['picture'];
+			        $c_pic = "picture/".$row['picture'];
 			    }
 			}
 			$conn->close();

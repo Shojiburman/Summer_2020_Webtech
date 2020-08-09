@@ -40,15 +40,21 @@ if(isset($_POST["submit"])) {
   // if everything is ok, try to upload file
   } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-      $sql = "UPDATE users SET picture = '".basename( $_FILES["fileToUpload"]["name"])."'
-      WHERE email = '".$current_user."'";
+      $conn = mysqli_connect('127.0.0.1', 'root', '', 'protibeshi');
+      if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+      }
+      $pic = basename( $_FILES["fileToUpload"]["name"]);
+      $sql = "UPDATE users SET picture = '".$pic."' WHERE u_id = '".$_SESSION['id']."'";
       if ($conn->query($sql) === TRUE) {
         $uploadMsgSuccess = "The file ". basename( $_FILES["fileToUpload"]["name"]) . " has been uploaded.";
         $uploadMsgErr = '';
+        header("location:changeProfilePic.php");
       }
     } else {
       $uploadMsgSuccess = '';
     }
   }
+  $conn->close();
 }
 ?>

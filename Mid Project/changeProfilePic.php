@@ -3,8 +3,6 @@
     $conn = mysqli_connect('127.0.0.1', 'root', '', 'protibeshi');
 
     include 'session.php';
-    $email = $_SESSION['email'];
-
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
@@ -31,13 +29,13 @@
                 <table align="center">
                     <tr>
                         <td>
-                            <img src="profile.png" width="200px" style="border-radius: 50%">
+                            <img src="<?php echo $c_pic; ?>" width="200px" style="border-radius: 50%">
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <p align="center" style="font-family: ROBOTO; border-bottom: 1px solid #0aab8e;  border-top: 1px solid #0aab8e; padding-bottom: 10px; padding-top: 10px"><?php echo strtoupper($_SESSION['name']); ?></p>
-                            <p align="center" style="font-family: ROBOTO; border-bottom: 1px solid #0aab8e; padding-bottom: 10px"><?php echo ($_SESSION['email']); ?></p>
+                            <p align="center" style="font-family: ROBOTO; border-bottom: 1px solid #0aab8e;  border-top: 1px solid #0aab8e; padding-bottom: 10px; padding-top: 10px"><?php echo strtoupper($c_name); ?></p>
+                            <p align="center" style="font-family: ROBOTO; border-bottom: 1px solid #0aab8e; padding-bottom: 10px"><?php echo ($c_email); ?></p>
                         </td>
                     </tr>
                     <tr>
