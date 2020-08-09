@@ -51,10 +51,10 @@
                         <a href="adminWork.php" style="text-decoration: none; color: #0aab8e; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white;">SEVICES</a>
                     </li>
                     <li>
-                        <a href="addUsers.php" style="text-decoration: none; color: #0aab8e; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white;">ADD USERS</a>
+                        <a href="#" style="text-decoration: none; color: #0aab8e; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white;">ADD USERS</a>
                     </li>
                     <li>
-                        <a href="#" style="text-decoration: none; color: #0aab8e; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white;">USERS LIST</a>
+                        <a href="usersList" style="text-decoration: none; color: #0aab8e; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white;">USERS LIST</a>
                     </li>
                     <li>
                         <a href="orderList.php" style="text-decoration: none; color: #0aab8e; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white;">ORDER LIST</a>
@@ -73,44 +73,28 @@
                     </li>
                 </ul>
             </td>
-            <td width="800px" height="600px" style="background-color: #f3f5f7">
-                <h3 style="font-family: Roboto; margin: 20px 10px 50px 10px; color: #0aab8e" align="center">USERS LIST</h3>
-                <table border="0" align="center" cellspacing="0" cellpadding="0">
-                    <tr>
-                        <td align="center">ID</td>
-                        <td align="center">NAME</td>
-                        <td align="center">EMAIL</td>
-                        <td align="center">CONTUCT NUMBER</td>
-                        <td align="center">ADDRESS</td>
-                        <td align="center">USER TYPE</td>
-                    </tr>
-                    <?php 
-                        $conn = mysqli_connect('127.0.0.1', 'root', '', 'protibeshi');
-                        if ($conn->connect_error) {
-                          die("Connection failed: " . $conn->connect_error);
-                        }
-                        $sql = "select * from users";
-                        if (($result = $conn->query($sql)) !== FALSE){
-                            while($row = $result->fetch_assoc()){
-                                $id = $row['u_id'];
-                                $name =  $row['name'];
-                                $email = $row['email'];
-                                $pnumber = $row['pnumber'];
-                                $address = $row['address'];
-                                $utype = $row['admin'];
-                                echo "<tr>
-                                        <td>{$id}</td>
-                                        <td>{$name}</td>
-                                        <td>{$email}</td>
-                                        <td>{$pnumber}</td>
-                                        <td>{$address}</td>
-                                        <td>{$utype}</td>
-                                    </tr>";
-                            }
-                        }
-                        $conn->close();
-                    ?>
-                </table>                
+            <td width="600px" height="600px" style="background-color: #f3f5f7">
+                <h3 style="font-family: Roboto; margin: 20px 10px 20px 10px; color: #0aab8e" align="center">ADD USERS</h3>  
+                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                    <table width="50%" cellpadding="2" cellspacing="0" align="center" style="padding: 30px;">
+                        <tr>
+                            <td>
+                                <input type="text" name="name" value="" placeholder="Name" style="padding: 10px; width: 300px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="email" value="" placeholder="Email" style="padding: 10px; width: 300px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input name="pass" type="password" placeholder="Password" style="padding: 10px; width: 300px;">
+                            </td>
+                        </tr>
+                    </table>
+                    <input name="submit" type="submit" value="SIGN UP" style="margin: 20px auto; display: block; padding: 10px 30px; border-radius: 5px; background-color: white; border: 1.5px solid #0aab8e; cursor: pointer;">
+                </form>             
             </td>
         </tr>
     </table>
