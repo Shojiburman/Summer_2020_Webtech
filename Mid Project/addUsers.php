@@ -51,7 +51,7 @@
                         <a href="adminWork.php" style="text-decoration: none; color: #0aab8e; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white;">SEVICES</a>
                     </li>
                     <li>
-                        <a href="addUsers.php" style="text-decoration: none; color: #0aab8e; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white;">ADD USERS</a>
+                        <a href="addUsers.php" style="text-decoration: none; color: white; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: #0aab8e;">ADD USERS</a>
                     </li>
                     <li>
                         <a href="usersList.php" style="text-decoration: none; color: #0aab8e; padding: 10px 30px; border: 1.5px solid #0aab8e; border-radius: 5px; background-color: white;">USERS LIST</a>
@@ -73,7 +73,7 @@
                     </li>
                 </ul>
             </td>
-            <td width="600px" height="600px" style="background-color: #f3f5f7">
+            <td width="800px" height="600px" style="background-color: #f3f5f7">
                 <h3 style="font-family: Roboto; margin: 20px 10px 20px 10px; color: #0aab8e" align="center">ADD USERS</h3>  
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     <table width="50%" cellpadding="2" cellspacing="0" align="center" style="padding: 30px;">
