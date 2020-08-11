@@ -6,6 +6,11 @@
 <html>
 <head>
 	<title>About</title>
+	<style>
+		#about {
+            border: 2px solid #0aab8e !important;
+        }
+	</style>
 </head>
 <body>
 	<?php

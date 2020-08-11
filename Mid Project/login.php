@@ -41,10 +41,9 @@
                 $sql = "select * from users where email = '".$email."' AND pass = '".$pass."'";
                 if (($result = $conn->query($sql)) !== FALSE){
                     while($row = $result->fetch_assoc()){
-                        $_SESSION['status']  = "Ok";
                         $_SESSION['id'] = $row['u_id'];
                         if(isset($remember) && in_array('yes', $remember)){
-                            setcookie('remember', $email, time() + (10 * 365 * 24 * 60 * 60));
+                            setcookie('remember', $row['u_id'], time() + (10 * 365 * 24 * 60 * 60));
                         } else {
                             setcookie('remember', "");
                         }
@@ -61,6 +60,11 @@
 
 <head>
     <title>Login</title>
+    <style>
+        #login {
+            border: 2px solid #0aab8e !important;
+        }
+    </style>
 </head>
 
 <body>

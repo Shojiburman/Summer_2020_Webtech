@@ -30,6 +30,9 @@
             width: 150px;
             height: auto;
         }
+        #adminWork {
+            border: 2px solid #0aab8e !important;
+        }
     </style>
 </head>
 
@@ -69,7 +72,7 @@
                 </ul>
             </td>
             <td width="800px" height="600px" style="background-color: #f3f5f7">
-                <table align="center" cellspacing="100">
+                <table align="center" cellspacing="90">
                     <tr>
                         <td>
                             <img src="electrician.svg">

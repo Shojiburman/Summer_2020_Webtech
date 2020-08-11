@@ -2,6 +2,11 @@
 <html>
 <head>
 	<title>Protibeshi</title>
+    <style>
+        #protibeshi {
+            border: 2px solid #0aab8e !important;
+        }
+    </style>
 </head>
 <body>
 	<?php

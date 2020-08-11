@@ -11,45 +11,6 @@
         $address = strtolower(trim($_POST['address']));
         $dob = strtolower(trim($_POST['dob']));
         $bio = strtolower(trim($_POST['bio']));
-
-        if (isset($_POST['email'])) {
-            $email = trim($_POST['email']);
-            if (!$email == '') {
-                if (substr_count($email, ' ') == 0) {
-                    if (substr_count($email, '@') == 0) {
-                        $emailErr = 'Email must have "@"';
-                    } else if (substr_count($email, '@') == 1) {
-                        if (strpos($email, '@') != 0) {
-                            if (substr_count($email, '.') != 0) {
-                                $atpos = strpos($email, '@');
-                                $domainPart = substr($email, $atpos + 1);
-
-                                $dotpos = strrpos($domainPart, '.');
-                                $domainExt = substr($domainPart, $dotpos + 1);
-                                $domainName = str_replace('.' . $domainExt, "", $domainPart);
-                                if (strlen($domainName) > 0 && validateDomainName($domainName)) {
-                                    if (strlen($domainExt) > 1 && validateDomainExt($domainExt)) {
-
-                                    } else {
-                                        $emailErr = 'Email must have more than 1 letter and letters only after last ".", should not start with number.';
-                                    }
-                                } else {
-                                    $emailErr = 'Email can only have dot(.), dash(-), chracters and numbers between "@" and last "." with no adjacent "@" or "."';
-                                }
-                            } else {
-                                $emailErr = 'Email must have "."';
-                            }
-                        } else {
-                            $emailErr = 'Email can not start with "@"';
-                        }                   
-                    } else {
-                        $emailErr = 'Email can not have multiple "@"';
-                    } 
-                } else {
-                    $emailErr = 'Email can not have spaces';
-                }
-            }
-        }
     
         if (!$work == '') {
             if($work != $c_work){
@@ -160,65 +121,6 @@
         }
     }
 
-
-    function validateName($string) {
-        $array = str_split($string);
-        foreach ($array as $value) {
-            if ($value == '.' || $value == '-' || $value == ' ' || ctype_alpha($value)) {
-                continue;
-            } else {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    function validateDomainName($string) {
-        foreach (explode(".", $string) as $part) {
-            if ($part == '') {
-                return false;
-            }
-        }
-        $array = str_split($string);
-        foreach ($array as $value) {
-            if ($value == '-' || $value == '.' || is_numeric($value) || ctype_alpha($value)) {
-                continue;
-            } else {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    function validateDomainExt($string) {
-        if (is_numeric($string[0])) {
-            return false;
-        }
-        $array = str_split($string);
-        foreach ($array as $value) {
-            if (is_numeric($value) || ctype_alpha($value)) {
-                continue;
-            } else {
-                return false;
-            }
-        }
-        return true;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -229,6 +131,9 @@
         input, textarea {
             margin: 10px;
             border-radius: 4px;
+        }
+        #profile {
+            border: 2px solid #0aab8e !important;
         }
     </style>
 </head>

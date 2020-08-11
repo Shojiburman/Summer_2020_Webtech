@@ -152,6 +152,11 @@
 
 <head>
     <title>Registration</title>
+    <style>
+        #registration {
+            border: 2px solid #0aab8e !important;
+        }
+    </style>
 </head>
 
 <body>

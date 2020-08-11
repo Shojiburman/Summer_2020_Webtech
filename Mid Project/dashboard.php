@@ -8,6 +8,11 @@
 
 <head>
     <title>Logged in Dashboard</title>
+    <style>
+        #dashboard {
+            border: 2px solid #0aab8e !important;
+        }
+    </style>
 </head>
 
 <body>
