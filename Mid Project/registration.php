@@ -103,18 +103,6 @@
         }            
     }
 
-    function validateName($string) {
-        $array = str_split($string);
-        foreach ($array as $value) {
-            if ($value == '.' || $value == '-' || $value == ' ' || ctype_alpha($value)) {
-                continue;
-            } else {
-                return false;
-            }
-        }
-        return true;
-    }
-
     function validateDomainName($string) {
         foreach (explode(".", $string) as $part) {
             if ($part == '') {
