@@ -118,20 +118,8 @@
 			<p></p>
 		</div>
 	</div>
-	<footer>
-		<div>
-			<input type="" name="">
-			<button>subscribe</button>
-		</div>
-		<div>
-			<p></p>
-			<ul>
-				<li><a href=""></a></li>
-				<li><a href=""></a></li>
-				<li><a href=""></a></li>
-			</ul>
-		</div>
-	</footer>
-
+	<?php
+    	include 'footer.html';
+    ?>
 </body>
 </html>
