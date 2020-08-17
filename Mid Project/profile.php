@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include 'session.php';
+    include 'php/session.php';
 
     $name = $email = $work = $pnumber = $address = $dob = $bio = "";
     if (isset($_POST['submit'])) {

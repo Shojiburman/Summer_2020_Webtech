@@ -2,7 +2,7 @@
     session_start();
     $conn = mysqli_connect('127.0.0.1', 'root', '', 'protibeshi');
 
-    include 'session.php';
+    include 'php/session.php';
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
@@ -28,9 +28,9 @@
             <td width="300px" height="600px" style="background-color: #f3f5f7">
                 <table align="center">
                     <tr>
-                        <td>
-                            <img src="<?php echo $c_pic; ?>" width="200px" style="border-radius: 50%">
-                        </td>
+                        <div style="width: 200px; height: 200px; display: block; margin: 0 auto">
+                                <img src="<?php echo $c_pic; ?>" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                        </div>
                     </tr>
                     <tr>
                         <td>
