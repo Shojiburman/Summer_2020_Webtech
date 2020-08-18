@@ -135,13 +135,13 @@
 
 		$sql = "select * from company";
 		$result = mysqli_query($conn, $sql);
-		$users = [];
+		$company = [];
 
 		while($row = mysqli_fetch_assoc($result)){
-			array_push($users, $row);
+			array_push($company, $row);
 		}
 
-		return $users;
+		return $company;
 	}
 
 

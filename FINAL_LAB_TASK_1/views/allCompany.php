@@ -16,14 +16,15 @@
 	
 	<h3>User list</h3>
 
-	<table border="1">
+	<table border="1" cellspacing="0" cellpadding="0">
 		<tr>
 			<td>ID</td>
 			<td>company_name</td>
 			<td>profile_description	</td>
 			<td>industry</td>
 			<td>company_website</td>
-			<td>use_account_id	</td>
+			<td>use_account_id</td>
+			<td>ACTION</td>
 		</tr>
 
 		<?php  
@@ -31,11 +32,11 @@
 			for ($i=0; $i != count($company); $i++) {  ?>
 		<tr>
 			<td><?=$company[$i]['id']?></td>
-			<td><?=$company[$i]['name']?></td>
-			<td><?=$company[$i]['description']?></td>
+			<td><?=$company[$i]['company_name']?></td>
+			<td><?=$company[$i]['profile_description']?></td>
 			<td><?=$company[$i]['industry']?></td>
-			<td><?=$company[$i]['website']?></td>
-			<td><?=$company[$i]['use_account_id']?></td>
+			<td><?=$company[$i]['company_website']?></td>
+			<td><?=$company[$i]['user_account_id']?></td>
 			<td>
 				<a href="edit.php?id=<?=$users[$i]['id']?>">Edit</a> |
 				<a href="delete.php?id=<?=$users[$i]['id']?>">Delete</a> 
