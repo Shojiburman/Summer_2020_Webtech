@@ -8,7 +8,20 @@
 			echo "DB connection error";
 		}
 
-		$sql = "select * from users where id={$id}";
+		$sql = "SELECT * from users where u_id={$id}";
+		$result = mysqli_query($conn, $sql);
+		$row = mysqli_fetch_assoc($result);
+		return $row;
+	}
+
+	function getByUsername($name){
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+
+		$sql = "SELECT u_id from users where name = '".$name."'";
 		$result = mysqli_query($conn, $sql);
 		$row = mysqli_fetch_assoc($result);
 		return $row;
@@ -40,7 +53,7 @@
 			echo "DB connection error";
 		}
 
-		$sql = "select * from users where name='{$user['username']}' and pass='{$user['password']}'";
+		$sql = "select * from users where name = '{$user['username']}' and pass = '{$user['password']}'";
 		$result = mysqli_query($conn, $sql);
 		$user = mysqli_fetch_assoc($result);
 
@@ -59,7 +72,7 @@
 			echo "DB connection error";
 		}
 
-		$sql = "insert into users values({$user['username']}','{$user['password']}', '{$user['email']}', 'admin')";
+		$sql = "INSERT into users (name, email, pass) values('".$user['username']."', '".$user['email']."', '".$user['password']."')";
 		if(mysqli_query($conn, $sql)){
 			return true;
 		}else{
@@ -74,7 +87,7 @@
 			echo "DB connection error";
 		}
 
-		$sql = "update users set name='{$user['username']}', pass='{$user['password']}', email='{$user['email']}' where u_id={$user['id']}";
+		$sql = "UPDATE users set name = '{$user['username']}', pass = '{$user['password']}', email = '{$user['email']}' where u_id = {$user['id']}";
 
 		if(mysqli_query($conn, $sql)){
 			return true;
@@ -96,4 +109,42 @@
 			return false;
 		}
 	}
+
+	function insertCompany($company){
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$id = getByUsername($_SESSION['username']);
+
+		$sql = "INSERT into company (company_name, profile_description, industry, company_website, user_account_id) values('".$company['cname']."', '".$company['description']."', '".$company['industry']."', '".$company['website']."', '".$id['u_id']."')";
+		if(mysqli_query($conn, $sql)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function getAllCompany(){
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+
+		$sql = "select * from company";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+
+		return $users;
+	}
+
+
+
+
 ?>

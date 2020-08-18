@@ -23,11 +23,11 @@
 			<table>
 				<tr>
 					<td>Username</td>
-					<td><input type="text" name="username" value="<?=$user['username']?>"></td>
+					<td><input type="text" name="username" value="<?=$user['name']?>"></td>
 				</tr>
 				<tr>
 					<td>Password</td>
-					<td><input type="password" name="password" value="<?=$user['password']?>"></td>
+					<td><input type="password" name="password" value="<?=$user['pass']?>"></td>
 				</tr>
 				<tr>
 					<td>Email</td>

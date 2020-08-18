@@ -34,7 +34,10 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" name="submit" value="Submit"></td>
+					<td>
+						<input type="submit" name="submit" value="Submit">
+						<button><a href="register.php" style="text-decoration: none; color: black">Sign Up</a></button>
+					</td>
 				</tr>
 			</table>
 		</fieldset>
