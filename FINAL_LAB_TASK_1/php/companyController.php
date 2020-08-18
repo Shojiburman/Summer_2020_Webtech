@@ -48,12 +48,8 @@
 				'industry'=> $industry,
 				'website'=> $website,
 			];
-
 			$status = updateCompany($company);
-			
 			$id = $_GET['id'];
-			var_dump($id);
-
 			if($status){
 				header('location: ../views/updateCompany.php?success=done&id=' . $id);
 			}else{

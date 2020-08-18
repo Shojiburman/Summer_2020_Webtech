@@ -3,9 +3,16 @@
 	require_once('../service/userService.php');
 
 	if (isset($_GET['id'])) {
+		$id = $_GET['id'];
 		$user = getByID($_GET['id']);	
 	}else{
 		header('location: all_users.php');
+	}
+	if(isset($_GET['success'])){
+		echo "Update sucessful";
+	}
+	if(isset($_GET['error'])){
+		echo "Something wrong";
 	}
 
 ?>
@@ -17,7 +24,7 @@
 </head>
 <body>
 
-	<form action="../php/userController.php" method="post">
+	<form action="../php/userController.php?id=<?=$id?>" method="post">
 		<fieldset>
 			<legend>Edit User</legend>
 			<table>
@@ -36,7 +43,6 @@
 				<tr>
 					<td></td>
 					<td>
-						<input type="hidden" name="id" value="<?=$user['id']?>">
 						<input type="submit" name="edit" value="Update"> 
 						<a href="all_users.php">Back</a>
 					</td>

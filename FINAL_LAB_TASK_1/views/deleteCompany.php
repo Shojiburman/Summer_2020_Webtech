@@ -9,13 +9,8 @@
 	}
 
 	if (isset($_GET['id'])) {
-		$userID = getByID($_GET['id']);
-		if($userID['u_id'] == $_GET['id']){
-			header('location: allCompany.php/error=current_user');
-		}else {
-			deleteCompanyID($_GET['id']);
-        	header('location: allCompany.php');
-		}
+		deleteCompanyID($_GET['id']);
+    	header('location: allCompany.php');
 	}else{
 		header('location: allCompany.php');
 	}

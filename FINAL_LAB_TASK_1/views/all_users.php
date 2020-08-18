@@ -16,7 +16,7 @@
 	
 	<h3>User list</h3>
 
-	<table border="1">
+	<table border="1" cellpadding="0" cellspacing="0">
 		<tr>
 			<td>ID</td>
 			<td>Username</td>

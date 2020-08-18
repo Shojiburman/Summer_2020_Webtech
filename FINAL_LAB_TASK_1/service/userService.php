@@ -86,8 +86,9 @@
 		if(!$conn){
 			echo "DB connection error";
 		}
+		$id = getByUsername($_SESSION['username']);
 
-		$sql = "UPDATE users set name = '{$user['username']}', pass = '{$user['password']}', email = '{$user['email']}' where u_id = {$user['id']}";
+		$sql = "UPDATE users set name = '{$user['username']}', pass = '{$user['password']}', email = '{$user['email']}' where u_id = '{$id['u_id']}'";
 
 		if(mysqli_query($conn, $sql)){
 			return true;
@@ -174,7 +175,20 @@
 		return $company;
 	}
 
+	function deleteCompanyID($company){
+		$conn = dbConnection();
+		if(!$conn){
+			echo "DB connection error";
+		}
 
+		$sql = "DELETE FROM company WHERE id = '".$company."'";
+
+		if(mysqli_query($conn, $sql)){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
 
 ?>
