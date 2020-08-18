@@ -126,6 +126,24 @@
 		}
 	}
 
+	function updateCompany($company){
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+		$id = getByUsername($_SESSION['username']);
+
+		$sql = "UPDATE company set company_name = '{$company['cname']}', profile_description = '{$company['description']}', 
+		industry = '{$company['industry']}', company_website = '{$company['website']}' where user_account_id =  '{$id['u_id']}'";
+		
+		if(mysqli_query($conn, $sql)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 	function getAllCompany(){
 		$conn = dbConnection();
 
@@ -133,7 +151,7 @@
 			echo "DB connection error";
 		}
 
-		$sql = "select * from company";
+		$sql = "SELECT * from company";
 		$result = mysqli_query($conn, $sql);
 		$company = [];
 
@@ -141,6 +159,18 @@
 			array_push($company, $row);
 		}
 
+		return $company;
+	}
+	function getCompanyByID($id){
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+
+		$sql = "SELECT * from company where id	= '".$id."'";
+		$result = mysqli_query($conn, $sql);
+		$company = mysqli_fetch_assoc($result);
 		return $company;
 	}
 

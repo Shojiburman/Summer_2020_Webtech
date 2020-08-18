@@ -14,7 +14,7 @@
 	<a href="home.php">Back</a> |
 	<a href="../php/logout.php">Logout</a> 
 	
-	<h3>User list</h3>
+	<h3>Company list</h3>
 
 	<table border="1" cellspacing="0" cellpadding="0">
 		<tr>
@@ -38,8 +38,8 @@
 			<td><?=$company[$i]['company_website']?></td>
 			<td><?=$company[$i]['user_account_id']?></td>
 			<td>
-				<a href="edit.php?id=<?=$users[$i]['id']?>">Edit</a> |
-				<a href="delete.php?id=<?=$users[$i]['id']?>">Delete</a> 
+				<a href="updateCompany.php?id=<?=$company[$i]['id']?>">Edit</a> |
+				<a href="delete.php?id=<?=$company[$i]['id']?>">Delete</a> 
 			</td>
 		</tr>
 

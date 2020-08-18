@@ -12,6 +12,7 @@
 	<a href="../views/create.php">Create New User</a> |
 	<a href="../views/all_users.php">User List</a> |
 	<a href="../views/addCompany.php">add company</a> |
+	<a href="../views/allCompany.php">company list</a> |
 	<a href="../php/logout.php">Logout</a> 
 </body>
 </html>
