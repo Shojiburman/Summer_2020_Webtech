@@ -14,6 +14,8 @@
 	if(isset($_GET['error'])){
 		echo "Something wrong";
 	}
+
+	$pic = getCompanyLogoByID($id);
 ?>
 
 <!DOCTYPE html>
@@ -53,5 +55,26 @@
 			</table>
 		</fieldset>
 	</form>
+	<table align="center">
+        <tr>
+            <td width="300px" height="300px">
+                <table align="center">
+                    <tr>
+                        <div style="width: 200px; height: 200px; display: block; margin: 0 auto">
+                            <img src="<?php echo $pic; ?>" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                        </div>
+                    </tr>
+                </table>
+            </td>
+            <td width="300px" height="300px">
+                <h3>UPLOAD COMPANY LOGO</h3>
+                <form action="../php/upload.php?id=<?=$id?>" method="post" enctype="multipart/form-data">
+                    <input type="file" name="fileToUpload" value="">
+                    <br>
+                    <input type="submit" name="submit" value="UPLOAD">
+                </form>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>

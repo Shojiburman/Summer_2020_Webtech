@@ -190,5 +190,20 @@
 		}
 	}
 
+	function getCompanyLogoByID($id){
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+
+		$sql = "SELECT * from company where id	= '".$id."'";
+		$result = mysqli_query($conn, $sql);
+		$company = mysqli_fetch_assoc($result);
+		$company = $company['company_logo'];
+		$company = "../pic/".$company;
+		return $company;
+	}
+
 
 ?>
