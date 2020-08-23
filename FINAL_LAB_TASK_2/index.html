@@ -3,33 +3,22 @@
 
 <head>
     <title>HTML-FORM Validation using PHP</title>
-    <style>
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
-        }
-        input[type=number] {
-          -moz-appearance: textfield;
-        }
-
-        strong {
-            color: red;
-        }
-    </style>
+    <meta charset="UTF-8"> 
+    <script type="text/javascript" src="script.js"></script>
 </head>
 
 <body>
     <form action="" method="post" id="name">
         <label>Name</label>
         <input type="text" name="name" value="" size="20px" style="margin: 5px 0px 5px 0px">
-        < <input name="nameSubmit" type="submit" value="Submit">
+        <button type="submit">Submit</button>
+        <div id="nameformmsg"></div>
     </form>
     <form action="" method="post" id="email">
         <label>Email</label>
         <input type="text" name="email" value="" style="margin: 5px 0px 5px 0px">
         <abbr title="Hint: sample@example.com">i</abbr>
-        < <input name="emailSubmit" type="submit" value="Submit">
+        <button>Submit</button>
     </form>
     <form action=">" method="post" id="gender">
         <fieldset style="width: 200px; display: inline-block;">
@@ -38,7 +27,7 @@
             <input type="radio" name="gender" value="Female"><label>Female</label>
             < <input type="radio" name="gender" value="Other"><label>Other</label>
         </fieldset>
-        < <input name="genderSubmit" type="submit" value="Submit">
+        <button>Submit</button>
     </form>
     <form action="" method="post" id="dob">
         <table>
@@ -61,7 +50,7 @@
                             </tr> 
                             <tr>
                                 <td colspan="5" style="border-top: 1px solid black; padding-top: 10px">
-                                    <input name="dobSubmit" type="submit" value="Submit">
+                                    <button>Submit</button>
                                 </td>
                             </tr>
                         </table>
@@ -79,7 +68,7 @@
             <input type="checkbox" name="degree[]" value="HSC"><label>HSC</label>
             <input type="checkbox" name="degree[]" value="BSc"><label>BSc</label>
         </fieldset>
-        < <input name="degreeSubmit" type="submit" value="Submit">
+        <button>Submit</button>
     </form>
     <form action="" method="post" id="blood">
         <div style="border-bottom: 1px solid black; padding-bottom: 10px; margin-bottom: 10px; display: inline-block;">
@@ -96,7 +85,7 @@
                 <option value="O-">O-</option>
             </select>
         </div>
-        < <input name="bloodSubmit" type="submit" value="Submit">
+        <input name="bloodSubmit" type="submit" value="Submit">
     </form>
     <form action="" method="post" id="pic">
         <table>
@@ -108,7 +97,7 @@
                         <input type="number" name="uid" value="">
                         <label>Picture</label>
                         <input type="file" name="pic">
-                        <input name="profileSubmit" type="submit" value="Submit">
+                        <button>Submit</button>
                     </fieldset>
                 </td>
                 <td>
@@ -116,6 +105,8 @@
             </tr>
         </table>
     </form>
+
+    <script type="text/javascript" src="script.js"></script>
 </body>
 
 </html>
