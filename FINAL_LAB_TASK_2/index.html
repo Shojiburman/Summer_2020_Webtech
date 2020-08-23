@@ -20,18 +20,18 @@
 </head>
 
 <body>
-    <form action="" method="post">
+    <form action="" method="post" id="name">
         <label>Name</label>
         <input type="text" name="name" value="" size="20px" style="margin: 5px 0px 5px 0px">
         < <input name="nameSubmit" type="submit" value="Submit">
     </form>
-    <form action="" method="post">
+    <form action="" method="post" id="email">
         <label>Email</label>
         <input type="text" name="email" value="" style="margin: 5px 0px 5px 0px">
         <abbr title="Hint: sample@example.com">i</abbr>
         < <input name="emailSubmit" type="submit" value="Submit">
     </form>
-    <form action=">" method="post">
+    <form action=">" method="post" id="gender">
         <fieldset style="width: 200px; display: inline-block;">
             <legend>Gender</legend>
             <input type="radio" name="gender" value="Male"><label>Male</label>
@@ -40,7 +40,7 @@
         </fieldset>
         < <input name="genderSubmit" type="submit" value="Submit">
     </form>
-    <form action="" method="post">
+    <form action="" method="post" id="dob">
         <table>
             <tr>
                 <td>
@@ -56,12 +56,13 @@
                             </tr>
                             <tr>
                                 <td style="padding-bottom: 10px"><input type="number" name="date" value="" size="1px"></td>
-                                <td style="padding-bottom: 10px"><strong style="color: black"> / </strong></td>
                                 <td style="padding-bottom: 10px"><input type="number" name="month" value="" size="1px"></td>
-                                <td style="padding-bottom: 10px"><strong style="color: black"> / </strong></td>
                                 <td style="padding-bottom: 10px"><input type="number" name="year" value="" size="2px"></td>
-                                < </tr> <tr>
-                                    <td colspan="5" style="border-top: 1px solid black; padding-top: 10px"><input name="dobSubmit" type="submit" value="Submit"></td>
+                            </tr> 
+                            <tr>
+                                <td colspan="5" style="border-top: 1px solid black; padding-top: 10px">
+                                    <input name="dobSubmit" type="submit" value="Submit">
+                                </td>
                             </tr>
                         </table>
                     </fieldset>
@@ -71,7 +72,7 @@
             </tr>
         </table>
     </form>
-    <form action="" method="post">
+    <form action="" method="post" id="degree">
         <fieldset style="width: 200px; display: inline-block;">
             <legend>Degree</legend>
             <input type="checkbox" name="degree[]" value="SSC"><label>SSC</label>
@@ -80,7 +81,7 @@
         </fieldset>
         < <input name="degreeSubmit" type="submit" value="Submit">
     </form>
-    <form action="" method="post">
+    <form action="" method="post" id="blood">
         <div style="border-bottom: 1px solid black; padding-bottom: 10px; margin-bottom: 10px; display: inline-block;">
             <label>Blood Group</label>
             <select name="blood">
@@ -97,7 +98,7 @@
         </div>
         < <input name="bloodSubmit" type="submit" value="Submit">
     </form>
-    <form action="" method="post">
+    <form action="" method="post" id="pic">
         <table>
             <tr>
                 <td>
