@@ -2,8 +2,9 @@
 <html>
 
 <head>
-    <title>HTML-FORM Validation using PHP</title>
+    <title>HTML-FORM Validation using JVASCRIPT</title>
     <meta charset="UTF-8"> 
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <script type="text/javascript" src="script.js"></script>
 </head>
 
@@ -11,13 +12,14 @@
     <form action="" method="post" id="name">
         <label>Name</label>
         <input type="text" name="name" value="" size="20px" style="margin: 5px 0px 5px 0px">
+        <h4 id="nameformmsg"></h4>
         <button type="submit">Submit</button>
-        <div id="nameformmsg"></div>
     </form>
     <form action="" method="post" id="email">
         <label>Email</label>
         <input type="text" name="email" value="" style="margin: 5px 0px 5px 0px">
         <abbr title="Hint: sample@example.com">i</abbr>
+        <h4 id="emailformmsg"></h4>
         <button>Submit</button>
     </form>
     <form action=">" method="post" id="gender">
@@ -25,7 +27,7 @@
             <legend>Gender</legend>
             <input type="radio" name="gender" value="Male"><label>Male</label>
             <input type="radio" name="gender" value="Female"><label>Female</label>
-            < <input type="radio" name="gender" value="Other"><label>Other</label>
+            <input type="radio" name="gender" value="Other"><label>Other</label>
         </fieldset>
         <button>Submit</button>
     </form>
@@ -85,7 +87,7 @@
                 <option value="O-">O-</option>
             </select>
         </div>
-        <input name="bloodSubmit" type="submit" value="Submit">
+        <button>Submit</button>
     </form>
     <form action="" method="post" id="pic">
         <table>
