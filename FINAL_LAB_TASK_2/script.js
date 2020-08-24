@@ -94,6 +94,32 @@ window.addEventListener('DOMContentLoaded', (event) => {
         	// submit form
         }
 	}, false);
+
+	/*----------------------------------------gender validation-----------------------*/
+
+	document.getElementById('gender').addEventListener("submit", function(evt) {
+        evt.preventDefault();
+        var form = evt.target;
+        if(form.querySelector('[name="Male"]').checked) {
+			msg = 'Success!';
+		}else if(form.querySelector('[name="Male"]').checked) {
+			msg = 'Success!';
+		} else if (form.querySelector('[name="Male"]').checked) {
+			msg = 'Success!';
+		} else {
+			msg = 'select your gender';
+		}
+		document.getElementById('genderformmsg').innerHTML = msg;
+		if(msg != 'Success!') {
+			document.getElementById('genderformmsg').style.cssText = "display: inline; color: red";
+		} else {
+			document.getElementById('genderformmsg').style.cssText = "display: inline; color: green";
+		}
+        if (msg == 'Success!') {
+        	// submit form
+        }
+		
+	}, false);
 });
 
 function validateName(string) {
