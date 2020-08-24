@@ -160,7 +160,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         var selector = form.querySelector('[name="blood"]');
     	var value = selector[selector.selectedIndex].value;
-    	console.log(value);
+ 
         if(value == 0) {
 			msg = 'select your blood group';
 		} else {
@@ -171,6 +171,38 @@ window.addEventListener('DOMContentLoaded', (event) => {
 			document.getElementById('bloodformmsg').style.cssText = "display: inline; color: red";
 		} else {
 			document.getElementById('bloodformmsg').style.cssText = "display: inline; color: green";
+		}
+        if (msg == 'Success!') {
+        	// submit form
+        }
+		
+	}, false);
+
+
+	/*-----------------------------------------profile pic validation--------------------------------------*/
+
+	document.getElementById('pic').addEventListener("submit", function(evt) {
+        evt.preventDefault();
+        var form = evt.target;
+        var msg = '';
+       
+
+       
+        if(form.querySelector('[name="uid"]').value.trim() == '') {
+			msg = 'user id required';
+		} else {
+			msg = 'Success!';
+			if(form.querySelector('[name="pic"]').value == '') {
+				msg = 'profile pic required';
+			} else {
+				msg = 'Success!';
+			}
+		}
+		document.getElementById('picformmsg').innerHTML = msg;
+		if(msg != 'Success!') {
+			document.getElementById('picformmsg').style.cssText = "display: inline; color: red";
+		} else {
+			document.getElementById('picformmsg').style.cssText = "display: inline; color: green";
 		}
         if (msg == 'Success!') {
         	// submit form
