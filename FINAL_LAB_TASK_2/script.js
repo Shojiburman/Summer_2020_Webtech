@@ -100,11 +100,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	document.getElementById('gender').addEventListener("submit", function(evt) {
         evt.preventDefault();
         var form = evt.target;
-        if(form.querySelector('[name="Male"]').checked) {
+        var msg = 'select your gender';
+        if(form.querySelector('[value="Male"]').checked) {
 			msg = 'Success!';
-		}else if(form.querySelector('[name="Male"]').checked) {
+		}else if(form.querySelector('[value="Female"]').checked) {
 			msg = 'Success!';
-		} else if (form.querySelector('[name="Male"]').checked) {
+		} else if (form.querySelector('[value="Other"]').checked) {
 			msg = 'Success!';
 		} else {
 			msg = 'select your gender';
