@@ -8,6 +8,6 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-strong {
-    color: red;
+h4 {
+  text-align: center;
 }
