@@ -145,7 +145,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
             document.getElementById('msg').style.cssText = "display: inline; color: green";
         }
 
-        
+        /*-----------------------------------------profile pic validation--------------------------------------*/
+
+        var msg = '';
+        if(form.querySelector('[name="pic"]').value == '') {
+            msg = 'profile pic required';
+        } else {
+            msg = 'Success!';
+        }
+        document.getElementById('msg').innerHTML = msg;
+        if(msg != 'Success!') {
+            document.getElementById('msg').style.cssText = "display: inline; color: red";
+        } else {
+            document.getElementById('msg').style.cssText = "display: inline; color: green";
+        }
 
 
     }, false);
