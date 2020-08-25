@@ -107,6 +107,28 @@ window.addEventListener('DOMContentLoaded', (event) => {
             document.getElementById('msg').style.cssText = "display: inline; color: green";
         }
 
+        /*---------------------------------------blood validation---------------------------------*/
+
+        var msg = 'select your blood group';
+       
+        var selector = form.querySelector('[name="blood"]');
+        var value = selector[selector.selectedIndex].value;
+ 
+        if(value == 0) {
+            msg = 'select your blood group';
+        } else {
+            msg = 'Success!';
+        }
+        document.getElementById('msg').innerHTML = msg;
+        if(msg != 'Success!') {
+            document.getElementById('msg').style.cssText = "display: inline; color: red";
+        } else {
+            document.getElementById('msg').style.cssText = "display: inline; color: green";
+        }
+
+        
+
+
     }, false);
 });
 
