@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>lab_Task_03</title>
+    <title>HTML-FORM Validation using JVASCRIPT</title>
+    <meta charset="UTF-8"> 
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+    <form method="POST" action="">
+        <table border="1" cellspacing="0" cellpadding="5" align="Center" width="450px" height="auto">
+            <th rowspan="2" colspan="3" align="Center">
+                <H1>PERSON PROFILE</H1>
+            </th>
+            <tr></tr>
+            <tr height="45px">
+                <td>Name</td>
+                <td>
+                    <input type="text" name="name" value=""  size="25px">
+                </td>
+                <td width="20px"></td>
+            </tr>
+            <tr height="45px">
+                <td>Email</td>
+                <td>
+                    <input type="text" name="email" value="" size="25px">
+                </td>
+                <td></td>
+            </tr>
+            <tr height="45px">
+                <td>Gender</td>
+                <td>
+                    <input type="radio" name="gender" value="Male" ><label>Male</label>
+                    <input type="radio" name="gender" value="Female" ><label>Female</label>
+                    <input type="radio" name="gender" value="Other" ><label>Other</label>
+                </td>
+                <td></td>
+            </tr>
+            <tr height="45px">
+                <td width="100px">Date Of Birth</td>
+                <td>
+                    <input type="number" name="date" value="" size="1px"><strong style="color: black">/ </strong>
+                    <input type="number" name="month" value="" size="1px"><strong style="color: black">/ </strong>
+                    <input type="number" name="year" value="" size="2px"><i> (dd/mm/yyyy)</i>
+                </td>
+                <td></td>
+            </tr>
+            <tr height="45px">
+                <td>Blood Group</td>
+                <td>
+                    <select name="blood">
+                        <option value="0">Select</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </td>
+                <td></td>
+            </tr>
+            <tr height="45px">
+                <td>Degree</td>
+                <td>
+                    <input type="checkbox" name="degree[]" value="SSC" ><label>SSC</label>
+                    <input type="checkbox" name="degree[]" value="HSC" ><label>HSC</label>
+                    <input type="checkbox" name="degree[]" value="BSc" ><label>BSc.</label>
+                    <input type="checkbox" name="degree[]" value="MSc" ><label>MSc.</label>
+                </td>
+                <td></td>
+            </tr>
+            <tr height="45px">
+                <td>Photo</td>
+                <td colspan="2"><input type="file" name="pic"></td>
+            </tr>
+            <tr height="45px">
+                <td colspan="3">
+                </td>
+            </tr>
+            <tr height="40px">
+                <td colspan="3" align="right">
+                    <input type="submit" name="submit" value="Submit">
+                    <input type="reset" name="reset" value="Reset">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
