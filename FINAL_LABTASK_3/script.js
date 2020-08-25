@@ -126,6 +126,27 @@ window.addEventListener('DOMContentLoaded', (event) => {
             document.getElementById('msg').style.cssText = "display: inline; color: green";
         }
 
+        /*------------------------------------------degree validation-------------------------------*/
+
+        var msg = 'select your degree';
+        if(form.querySelector('[value="SSC"]').checked) {
+            msg = 'Success!';
+        }else if(form.querySelector('[value="HSC"]').checked) {
+            msg = 'Success!';
+        } else if (form.querySelector('[value="BSc"]').checked) {
+            msg = 'Success!';
+        } else {
+            msg = 'select your degree';
+        }
+        document.getElementById('msg').innerHTML = msg;
+        if(msg != 'Success!') {
+            document.getElementById('msg').style.cssText = "display: inline; color: red";
+        } else {
+            document.getElementById('msg').style.cssText = "display: inline; color: green";
+        }
+
+        
+
 
     }, false);
 });
