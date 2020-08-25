@@ -126,8 +126,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
             document.getElementById('msg').style.cssText = "display: inline; color: green";
         }
 
-        
-
 
     }, false);
 });
