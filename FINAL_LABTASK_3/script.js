@@ -86,9 +86,27 @@ window.addEventListener('DOMContentLoaded', (event) => {
         } else {
             document.getElementById('msg').style.cssText = "display: inline; color: green";
         }
-        if (msg == 'Success!') {
-            // submit form
+        
+
+        /*----------------------------------------gender validation-----------------------*/
+
+        var msg = 'select your gender';
+        if(form.querySelector('[value="Male"]').checked) {
+            msg = 'Success!';
+        }else if(form.querySelector('[value="Female"]').checked) {
+            msg = 'Success!';
+        } else if (form.querySelector('[value="Other"]').checked) {
+            msg = 'Success!';
+        } else {
+            msg = 'select your gender';
         }
+        document.getElementById('msg').innerHTML = msg;
+        if(msg != 'Success!') {
+            document.getElementById('msg').style.cssText = "display: inline; color: red";
+        } else {
+            document.getElementById('msg').style.cssText = "display: inline; color: green";
+        }
+
     }, false);
 });
 
