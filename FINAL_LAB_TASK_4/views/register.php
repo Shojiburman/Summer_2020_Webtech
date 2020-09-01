@@ -54,23 +54,26 @@
 		}
 		function f2(){
 			document.getElementById('emailinfo').innerHTML = '';
-		}
-
-		function load(){
 			var email = document.getElementById('email').value;
 			var xhttp = new XMLHttpRequest();
-			xhttp.open('POST', 'register.php', true);
+			xhttp.open('POST', '../service/reg.php', true);
 			xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 			xhttp.send('email='+email);
 
 			xhttp.onreadystatechange = function (){
 				if(this.readyState == 4 && this.status == 200){
 
-					if(this.responseText != ""){
-						document.getElementById('login').style.display = 'inline';
+					if(this.responseText != "ok"){
+						document.getElementById('emailinfo').innerHTML = 'Email is ok';
+					} else {
+						document.getElementById('emailinfo').innerHTML = 'Email is taken';
 					}
 				}	
 			}
+		}
+
+		function load(){
+			
 		}
 	</script>
 </body>
