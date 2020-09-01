@@ -31,15 +31,15 @@
 				<tr>
 					<td>Email</td>
 					<td>
-						<input type="text" id="email" name="email" onkeyup="f1()">
+						<input type="text" id="email" name="email" onblur="f1()" onkeyup="f2()">
 						<p id="emailinfo" style="display: inline;"></p>
 					</td>
 				</tr>
 				<tr>
 					<td></td>
 					<td>
-						<input type="button" name="submit" value="Submit" >
-						<a href="login.php" id="login">Login.php</a>
+						<input type="button" name="submit" value="Submit" onclick="load()">
+						<a href="login.php" id="login" style="display: none;">Login.php</a>
 					</td>
 				</tr>
 			</table>
@@ -47,11 +47,31 @@
 	</form>
 	<script type="text/javascript">
 		function f1(){
-				var email = document.getElementById('name').value;
+				var email = document.getElementById('email').value;
 				if(email == ""){
 					document.getElementById('emailinfo').innerHTML = 'Email cant empty';
 				}
+		}
+		function f2(){
+			document.getElementById('emailinfo').innerHTML = '';
+		}
+
+		function load(){
+			var email = document.getElementById('email').value;
+			var xhttp = new XMLHttpRequest();
+			xhttp.open('POST', 'register.php', true);
+			xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+			xhttp.send('email='+email);
+
+			xhttp.onreadystatechange = function (){
+				if(this.readyState == 4 && this.status == 200){
+
+					if(this.responseText != ""){
+						document.getElementById('login').style.display = 'inline';
+					}
+				}	
 			}
+		}
 	</script>
 </body>
 </html>
