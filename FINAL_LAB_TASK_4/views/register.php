@@ -133,10 +133,10 @@
 				xhttp.onreadystatechange = function (){
 					if(this.readyState == 4 && this.status == 200){
 
-						if(this.responseText != "insert"){
+						if(this.responseText == "insert"){
 							document.getElementById('login').style.display = 'inline';
-						} else if (this.responseText != "not insert") {
-							document.getElementsByClassName('err')[3].innerHTML = 'db error';
+						} else if (this.responseText == "not") {
+							document.getElementById('login').style.display = 'none';
 						}
 					}	
 				}

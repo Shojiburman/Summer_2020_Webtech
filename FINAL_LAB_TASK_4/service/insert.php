@@ -9,13 +9,13 @@
 	$email = $_POST['email'];
 	$name = $_POST['name'];
 	$pass = $_POST['pass'];
-	$data = 'not'
+	$data = 'not';
 
-	$sql = "INSERT INTO users (name, email, pass)VALUES ('".$name."', '" . $email . "', '".$pass."');";
-	if (mysqli_query($conn, $sql)) {
+	$sql = "INSERT INTO users (name, email, pass) VALUES ('" . $name . "', '" . $email . "', '" . $pass . "');";
+	if ($conn->query($sql) === TRUE) {
 	  $data = "insert";
 	} else {
-	  $data = "not insert";
+	  $data = "not";
 	}
 	echo $data;
 ?>
