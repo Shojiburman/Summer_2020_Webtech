@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<a href="home.php">Back</a> |
+	<a href="adminHome.php">Back</a> |
 	<a href="../php/logout.php">Logout</a> 
 	
 	<h3>User list</h3>

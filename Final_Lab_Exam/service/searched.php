@@ -14,7 +14,7 @@
 					<td>Username</td>
 					<td>Name</td>
 					<td>Contuct Number</td>
-					<td>Action</td>
+					
 				</tr>";
 
 	while ($row = mysqli_fetch_assoc($result)) {
@@ -23,10 +23,6 @@
 							<td>{$row['username']}</td>
 							<td>{$row['name']}</td>
 							<td>{$row['number']}</td>
-							<td>
-								<a href='edit.php?id=<?=$row['id']?>'>Edit</a> |
-								<a href='delete.php?id=<?=$row['id']?>'>Delete</a> 
-							</td>
 					</tr>";
 	}
 
