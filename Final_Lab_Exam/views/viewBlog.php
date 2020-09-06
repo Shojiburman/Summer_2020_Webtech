@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<button><a href="adminHome.php">Back</a></button>
+	<button><a href="home.php">Back</a></button>
 	
 	<h1>Blog list</h1>
 
