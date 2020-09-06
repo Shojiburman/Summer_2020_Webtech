@@ -27,11 +27,15 @@
 				</tr>
 				<tr>
 					<td>Password</td>
-					<td><input type="password" name="password" value="<?=$user['password']?>"></td>
+					<td><input type="password" name="password" value="<?=$user['pass']?>"></td>
 				</tr>
 				<tr>
-					<td>Email</td>
-					<td><input type="text" name="email" value="<?=$user['email']?>"></td>
+					<td>Author Name</td>
+					<td><input type="text" name="name" value="<?=$user['name']?>"></td>
+				</tr>
+				<tr>
+					<td>Cpontuct Number</td>
+					<td><input type="text" name="number" value="<?=$user['number']?>"></td>
 				</tr>
 				<tr>
 					<td></td>

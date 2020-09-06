@@ -8,7 +8,20 @@
 			echo "DB connection error";
 		}
 
-		$sql = "select * from users where id={$id}";
+		$sql = "SELECT * from users where id = '$id'";
+		$result = mysqli_query($conn, $sql);
+		$row = mysqli_fetch_assoc($result);
+		return $row;
+	}
+
+	function getByUsename($uname){
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+
+		$sql = "SELECT * from users where username = '$uname'";
 		$result = mysqli_query($conn, $sql);
 		$row = mysqli_fetch_assoc($result);
 		return $row;
@@ -74,7 +87,7 @@
 			echo "DB connection error";
 		}
 
-		$sql = "update users set name='{$user['username']}', pass='{$user['password']}', email='{$user['email']}' where u_id={$user['id']}";
+		$sql = "UPDATE users set username ='{$user['username']}', pass='{$user['pass']}', name ='{$user['name']}', `number` = '{$user['number']}', where id = '{$user['id']}'";
 
 		if(mysqli_query($conn, $sql)){
 			return true;
@@ -88,7 +101,7 @@
 			echo "DB connection error";
 		}
 
-		$sql = "DELETE FROM users WHERE u_id = '".$user."'";
+		$sql = "DELETE FROM users WHERE id = '".$user."'";
 
 		if(mysqli_query($conn, $sql)){
 			return true;

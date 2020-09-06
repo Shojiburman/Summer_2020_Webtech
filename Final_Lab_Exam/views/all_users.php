@@ -21,8 +21,8 @@
 			<td>ID</td>
 			<td>Username</td>
 			<td>Password</td>
-			<td>Email</td>
-			<td>Type</td>
+			<td>Author Name</td>
+			<td>Number</td>
 			<td>Action</td>
 		</tr>
 
@@ -30,14 +30,14 @@
 			$users = getAllUser();
 			for ($i=0; $i != count($users); $i++) {  ?>
 		<tr>
-			<td><?=$users[$i]['u_id']?></td>
-			<td><?=$users[$i]['name']?></td>
+			<td><?=$users[$i]['id']?></td>
+			<td><?=$users[$i]['username']?></td>
 			<td><?=$users[$i]['pass']?></td>
-			<td><?=$users[$i]['email']?></td>
-			<td><?=$users[$i]['admin']?></td>
+			<td><?=$users[$i]['name']?></td>
+			<td><?=$users[$i]['number']?></td>
 			<td>
-				<a href="edit.php?id=<?=$users[$i]['u_id']?>">Edit</a> |
-				<a href="delete.php?id=<?=$users[$i]['u_id']?>">Delete</a> 
+				<a href="edit.php?id=<?=$users[$i]['id']?>">Edit</a> |
+				<a href="delete.php?id=<?=$users[$i]['id']?>">Delete</a> 
 			</td>
 		</tr>
 
