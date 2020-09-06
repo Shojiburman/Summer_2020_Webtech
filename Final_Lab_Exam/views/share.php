@@ -8,23 +8,34 @@
 	<title>Share your BLOG</title>
 </head>
 <body>
+	<button><a href="home.php">Back</a></button>
+	<p></p>
+	<p></p>
 
 	<form>
 		<fieldset>
 			<legend>SignUp</legend>
 			<table>
 				<tr>
-					<td>Username</td>
+					<td>Blog Title</td>
 					<td>
-						<input type="text" id="title" name="username" oninput="f1()" onblur="usernameCheck()">
+						<input type="text" id="title" name="username" oninput="f1()">
 						<p class="err" style="display: inline;"></p>
 					</td>
 				</tr>
 				<tr>
-					<td>Password</td>
+					<td>Blog</td>
 					<td>
 						<input type="text" id="blog" name="password" oninput="f2()">
 						<p class="err" style="display: inline;"></p>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<input type="button" name="submit" value="Submit" onclick="load()">
+						<p class="err" style="display: inline;"></p>
+						<input type="hidden" id="id" name="id" value="<?=$_SESSION['username']?>">
 					</td>
 				</tr>
 			</table>
@@ -33,9 +44,9 @@
 	<script type="text/javascript">
 
 		function f1(){
-			var name = document.getElementById('Uname').value;
+			var name = document.getElementById('title').value;
 			if(name == ""){
-				document.getElementsByClassName('err')[0].innerHTML = 'username cant empty';
+				document.getElementsByClassName('err')[0].innerHTML = 'Title cant empty';
 				document.getElementsByClassName('err')[0].style.color = "red";
 			} else {
 				document.getElementsByClassName('err')[0].innerHTML = '';
@@ -44,9 +55,9 @@
 		}
 
 		function f2(){
-			var name = document.getElementById('Name').value;
+			var name = document.getElementById('blog').value;
 			if(name == ""){
-				document.getElementsByClassName('err')[2].innerHTML = 'Name cant empty';
+				document.getElementsByClassName('err')[2].innerHTML = 'Blog cant empty';
 				document.getElementsByClassName('err')[2].style.color = "red";
 			} else {
 				document.getElementsByClassName('err')[2].innerHTML = '';
@@ -58,21 +69,22 @@
 		function load(){
 			var title = document.getElementById('title').value;
 			var blog = document.getElementById('blog').value;
+			var id = document.getElementById('id').value;
 			console.log(title);
 			console.log(blog);
 			if((title != '') && (blog != '')){
 				var xhttp = new XMLHttpRequest();
 				xhttp.open('POST', '../service/insertBlog.php', true);
 				xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-				xhttp.send('title='+title+'&blog='+blog+'&a_id='+$_SESSION['username']);
+				xhttp.send('title='+title+'&blog='+blog+'&a_id='+id);
 
 				xhttp.onreadystatechange = function (){
 					if(this.readyState == 4 && this.status == 200){
 
 						if(this.responseText == "insert"){
-							document.getElementById('login').style.display = 'inline';
+							document.getElementsByClassName('err')[2].innerHTML = 'published';
 						} else if (this.responseText == "not") {
-							document.getElementById('login').style.display = 'none';
+							document.getElementsByClassName('err')[2].innerHTML = 'Not published';
 						}
 					}	
 				}

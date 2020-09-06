@@ -45,6 +45,23 @@
 		return $users;
 	}
 
+	function getBlog($id){
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+
+		$sql = "SELECT * from blogs where a_id = '$id'";
+		$result = mysqli_query($conn, $sql);
+		$users = [];
+
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		}
+		return $users;
+	}
+
 
 	function validate($user){
 		$conn = dbConnection();

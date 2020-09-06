@@ -9,6 +9,8 @@
 	$title = $_POST['title'];
 	$blog = $_POST['blog'];
 	$a_id = $_POST['a_id'];
+	$row = getByUsename($a_id);
+	$a_id = $row['id'];
 	$data = 'not';
 
 	$sql = "INSERT INTO blogs (title, blog, a_id) VALUES ('" . $title . "', '" . $blog . "', '" . $a_id . "');";
