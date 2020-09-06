@@ -148,7 +148,6 @@
 				document.getElementsByClassName('err')[2].innerHTML = 'Email cant empty';
 				document.getElementsByClassName('err')[2].style.color = "red";
 			}
-			
 		}
 	</script>
 </body>

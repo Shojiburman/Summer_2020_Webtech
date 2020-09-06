@@ -5,6 +5,7 @@
 	if(!$conn){
 		echo "DB connection error";
 	}
+	
 	$email = $_POST['email'];
 	
 	if($email != ""){
