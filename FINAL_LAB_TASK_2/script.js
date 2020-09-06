@@ -209,6 +209,77 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
 		
 	}, false);
+
+	/*-------------------------------------------dob validation-------------------------------------------*/
+
+	document.getElementById('dob').addEventListener("submit", function(evt) {
+        evt.preventDefault();
+        var form = evt.target;
+        var msg = '';
+       
+
+       
+        if(form.querySelector('[name="uid"]').value.trim() == '') {
+			msg = 'user id required';
+		} else {
+			msg = 'Success!';
+			if(form.querySelector('[name="pic"]').value == '') {
+				msg = 'profile pic required';
+			} else {
+				msg = 'Success!';
+			}
+		}
+		if (isset(_POST['dobSubmit'])) {
+            if (empty(_POST["year"])) {
+                year = _POST["year"];
+                dateErr = "Year(yyyy) is required";
+            } else {
+                year = intval(trim(_POST['year']));
+                if (year < 2017 && year > 1899) {
+                    if (empty(_POST["month"])) {
+                        month = _POST["month"];
+                        dateErr = "Month(mm) is required";
+                    } else {
+                        month = intval(trim(_POST['month']));
+                        if (month > 0 && month < 13){
+                            longmm = [1, 3, 5, 7, 8, 10, 12];
+                            shortmm = [4, 6, 9, 11];
+                            if (empty(_POST["date"])) {
+                                date = _POST["date"];
+                                dateErr = "Date(dd) is required";
+                            } else {
+                                date = intval(trim(_POST['date']));
+                                if (in_array(month, longmm)) {
+                                    if (date > 31 || date < 1) {
+                                       dateErr = "Date(dd) must be between 1 -31";
+                                    }
+                                } else if (in_array(month, shortmm)) {
+                                    if (date > 30 || date < 1) {
+                                       dateErr = "Date(dd) must be between 1 -30";
+                                    }
+                                } else if (month == 2) {
+                                    if (((year % 4 == 0) && (year % 100!= 0)) || (year % 400 == 0)) {
+                                        if (date > 29 || date < 1) {
+                                           dateErr = "Date(dd) must be between 1 -29";
+                                        }
+                                    } else {
+                                        if (date > 28 || date < 1) {
+                                           dateErr = "Date(dd) must be between 1 -28";
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            dateErr = "Month(mm) must be between 1 -12";
+                        }                            
+                    }
+                } else {
+                    dateErr = "Year(yyyy) must be between 1900 - 2016";
+                }
+            }
+        }   
+		
+	}, false);
 });
 
 function validateName(string) {

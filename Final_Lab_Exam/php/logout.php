@@ -2,6 +2,6 @@
 	session_start();
 	session_destroy();
 	setcookie('remember', "");
-	header('location: ../login.php');
+	header('location: ../views/login.php');
 
 ?>

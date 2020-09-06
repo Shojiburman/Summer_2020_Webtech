@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="adminNav.css">
+    <script type="text/javascript" src="adminNav.js"></script>
+</head>
+
+<body>
+    <!-- Component -->
+    <div class="navbar-component">
+        <!-- Class `area` is a container -->
+        <div class="navbar area">
+            <!-- Logo -->
+            <a href="#" class="brand">Brand</a>
+            <!-- List of links -->
+            <nav role="navigation" id="navigation" class="list">
+                <a href="dashboard.php" class="item -link">Home</a>
+                <a href="about.php" class="item -link">About</a>
+                <a href="Profile.php" class="item -link">Profile</a>
+                <a href="adminWork.php" class="item -link">Work</a>
+                <a href="php/logout.php"><img src="logout.svg" style="width: 20px"></a>
+            </nav>
+            <!-- Button to toggle the display menu  -->
+            <button data-collapse data-target="#navigation" class="toggle">
+                <!-- Hamburger icon -->
+                <span class="icon"></span>
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>

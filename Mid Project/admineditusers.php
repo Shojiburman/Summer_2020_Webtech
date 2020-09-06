@@ -106,9 +106,9 @@
                                         <td>{$pnumber}</td>
                                         <td>{$address}</td>
                                         <td>{$utype}</td>
-                                        <td><a href='admineditusers?id=$id?' style='color: green'>EDIT</a>
+                                        <td><a href='profile.php?id=$id?' style='color: green'>EDIT</a>
                                         <span>   </span>
-                                        <a href='deleteUsers.php?id=$id?' style='color: red'>DELETE</a></td>
+                                        <a href='' style='color: red'>DELETE</a></td>
                                     </tr>";
                             }
                         }
