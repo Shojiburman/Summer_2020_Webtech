@@ -23,8 +23,8 @@
 				<h3 style="border-bottom: 1px solid black; padding-bottom: 5px; width: max-content;"><?=$blog[$i]['title']?></h3>
 				<p><?=$blog[$i]['blog']?></p>
 			</div>
-			<button><a href="edit.php?id=<?=$blog[$i]['b_id']?>">Edit</a></button>
-			<button><a href="delete.php?id=<?=$blog[$i]['b_id']?>">Delete</a></button>
+			<button><a href="editBlog.php?id=<?=$blog[$i]['b_id']?>">Edit</a></button>
+			<button><a href="deleteBlog.php?id=<?=$blog[$i]['b_id']?>">Delete</a></button>
 	<?php } ?>
 </body>
 </html>

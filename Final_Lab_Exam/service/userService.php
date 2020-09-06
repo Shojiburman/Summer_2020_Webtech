@@ -62,6 +62,19 @@
 		return $users;
 	}
 
+	function getBlogById($id){
+		$conn = dbConnection();
+
+		if(!$conn){
+			echo "DB connection error";
+		}
+
+		$sql = "SELECT * from blogs where b_id = '$id'";
+		$result = mysqli_query($conn, $sql);
+		$row = mysqli_fetch_assoc($result);
+		return $row;
+	}
+
 
 	function validate($user){
 		$conn = dbConnection();
@@ -70,7 +83,7 @@
 			echo "DB connection error";
 		}
 
-		$sql = "select * from users where name='{$user['username']}' and pass='{$user['password']}'";
+		$sql = "SELECT * from users where name='{$user['username']}' and pass='{$user['password']}'";
 		$result = mysqli_query($conn, $sql);
 		$user = mysqli_fetch_assoc($result);
 
@@ -119,6 +132,21 @@
 		}
 
 		$sql = "DELETE FROM users WHERE id = '".$user."'";
+
+		if(mysqli_query($conn, $sql)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function deleteBlogID($user){
+		$conn = dbConnection();
+		if(!$conn){
+			echo "DB connection error";
+		}
+
+		$sql = "DELETE FROM blogs WHERE b_id = '".$user."'";
 
 		if(mysqli_query($conn, $sql)){
 			return true;
